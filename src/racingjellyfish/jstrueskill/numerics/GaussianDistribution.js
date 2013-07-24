@@ -65,6 +65,25 @@ GaussianDistribution.prototype.getPrecisionMean = function() {
 	return this.precisionMean;
 };
 
+/**
+ * The normalization constant multiplies the exponential and causes
+ * the integral over (-Inf,Inf) to equal 1
+ *
+ * @return 1/sqrt(2*pi*σ)
+ */
+GaussianDistribution.prototype.getNormalizationConstant = function() {
+	// Great derivation of this is at
+	// http://www.astro.psu.edu/~mce/A451_2/A451/downloads/notes0.pdf
+	return 1.0 / (Math.sqrt(2 * Math.PI) * this.standardDeviation);
+};
+
+/**
+ * Multiply this gaussian by the specified gaussian.
+ */
+GaussianDistribution.prototype.mult = function(other) {
+	return GaussianDistribution.mult(this, other);
+};
+
 GaussianDistribution.prototype.toString = function() {
 	return "GaussianDistribution(Mean(μ) = " + this.getMean() +
 		", Std-Dev(σ) = " + this.getStandardDeviation();
@@ -168,6 +187,49 @@ GaussianDistribution.errorFunctionCumulativeTo = function(x) {
 };
 
 /**
+ * Return the inverse cumulative to the specified value for the specified gaussian.
+ *
+ * From numerical recipes, page 320
+ */
+GaussianDistribution.inverseCumulativeTo = function(x, mean, standardDeviation) {
+	// Check arguments
+	if (!mean) {
+		mean = 0;
+	}
+	if (!standardDeviation) {
+		standardDeviation = 1;
+	}
+
+	return mean - Math.sqrt(2) * standardDeviation *
+		GaussianDistribution.inverseErrorFunctionCumulativeTo(2 * x);
+};
+
+/**
+ * Return the inverse error function cumulative to the specified value for
+ * the specified gaussian.
+ *
+ * From numerical recipes, page 265
+ */
+GaussianDistribution.inverseErrorFunctionCumulativeTo = function(p) {
+	if (p >= 2.0) {
+		return -100;
+
+	}
+	if (p <= 0.0) {
+		return 100;
+	}
+
+	var pp = (p < 1.0) ? p : 2 - p;
+	var t = Math.sqrt(-2 * Math.log(pp / 2.0)); // Initial guess
+	var  x = -0.70711 * ((2.30753 + t * 0.27061) / (1.0 + t * (0.99229 + t * 0.04481)) - t);
+	for (var j = 0; j < 2; j++) {
+		var err = GaussianDistribution.errorFunctionCumulativeTo(x) - pp;
+		x += err / (1.1283791670955126 * Math.exp(-(x * x)) - x * err); // Halley
+	}
+	return p < 1.0 ? x : -x;
+};
+
+/**
  * Return the value of the specified gaussian at the specified value.
  *
  * N.B. If mean and/or standard deviation are not specified the
@@ -198,6 +260,14 @@ GaussianDistribution.at = function(x, mean, standardDeviation) {
 	return result;
 };
 
+GaussianDistribution.mult = function(left, right) {
+	// Although we could use equations from
+	// http://www.tina-vision.net/tina-knoppix/tina-memo/2003-003.pdf
+	// for multiplication, the precision mean ones are easier to write :)
+	return GaussianDistribution.fromPrecisionMean(left.getPrecisionMean() +
+		right.getPrecisionMean(), left.getPrecision() + right.getPrecision());
+};
+
 GaussianDistribution.logProductNormalization = function(left, right) {
 	if (left.getPrecision() === 0 || right.getPrecision() === 0)
 	{
@@ -208,6 +278,19 @@ GaussianDistribution.logProductNormalization = function(left, right) {
 	var logSqrt2Pi = Math.log(Math.sqrt(2 * Math.PI));
 	return -logSqrt2Pi - (Math.log(varianceSum) / 2.0) -
 		(MathUtils.square(meanDifference) / (2.0 * varianceSum));
+};
+
+GaussianDistribution.logRatioNormalization = function(numerator, denominator) {
+	if (numerator.getPrecision() === 0 || denominator.getPrecision() === 0)
+	{
+		return 0;
+	}
+	var varianceDifference = denominator.getVariance() - numerator.getVariance();
+	var meanDifference = numerator.getMean() - denominator.getMean();
+	var logSqrt2Pi = Math.log(Math.sqrt(2 * Math.PI));
+	return Math.log(denominator.getVariance()) + logSqrt2Pi -
+		Math.log(varianceDifference) / 2.0 +
+		MathUtils.square(meanDifference) / (2 * varianceDifference);
 };
 
 /**
