@@ -113,7 +113,7 @@ GaussianDistribution.atLeast = function(gaussian) {
  * Construct from the precision and precision mean.
  */
 GaussianDistribution.fromPrecisionMean = function(precisionMean, precision) {
-	return new GaussianDistribution(precisionMean / precision, sqrt(1.0 / precision),
+	return new GaussianDistribution(precisionMean / precision, Math.sqrt(1.0 / precision),
 		1.0 / precision, precision, precisionMean);
 };
 
