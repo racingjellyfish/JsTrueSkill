@@ -4,10 +4,10 @@ var square = MathUtils.square;
 var INV_SQRT_2 = -0.7071067811865476;
 
 /**
- * Immutable representation of the Gaussian distribution of one variable. Not normalized:
+ * Immutable representation of the gaussian distribution of one variable. Not normalized:
  *
  * <pre>
- *			1			-(x)^2 / (2)
+ *			1			-(x)^2 / 2
  * P(x)=----------- * e
  *		sqrt(2*pi)
  * </pre>
@@ -24,16 +24,13 @@ var INV_SQRT_2 = -0.7071067811865476;
  */
 
 /**
- * Private constructor that sets everything at once.
- * <p>
- * Only allow other constructors to use this because if the public were to mess up the relationship between the
- * parameters, who knows what would happen?
+ * Constructor that calculates precision and precision mean from the supplied values.
  */
 var GaussianDistribution = function(mean, standardDeviation) {
-	/** The peak of the Gaussian, μ */
+	/** The peak of the gaussian, μ */
 	this.mean = mean;
 
-	/** The width of the Gaussian, σ, where the height drops to max/e */
+	/** The width of the gaussian, σ, where the height drops to max/e */
 	this.standardDeviation = standardDeviation;
 
 	/** The square of the standard deviation, σ^2 */
@@ -106,13 +103,15 @@ GaussianDistribution.prototype.equals = function(other) {
 };
 
 /**
- * Construct from another Gaussian.
+ * Construct from another gaussian.
  */
 GaussianDistribution.atLeast = function(gaussian) {
 	return new GaussianDistribution(gaussian.getMean(), gaussian.getStandardDeviation());
 };
 
-
+/**
+ * Construct from the precision and precision mean.
+ */
 GaussianDistribution.fromPrecisionMean = function(precisionMean, precision) {
 	return new GaussianDistribution(precisionMean / precision, sqrt(1.0 / precision),
 		1.0 / precision, precision, precisionMean);
@@ -200,7 +199,7 @@ GaussianDistribution.at = function(x, mean, standardDeviation) {
 };
 
 /**
- * The Gaussian representation of a flat line.
+ * The gaussian representation of a flat line.
  */
 GaussianDistribution.uniform = function() {
 	return new GaussianDistribution.fromPrecisionMean(0, 0);
