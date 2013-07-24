@@ -36,3 +36,21 @@ exports.testAt = function(test) {
 	test.done();
 };
 
+exports.testLogProductNormalization = function(test) {
+	var standardNormal = new GaussianDistribution(0, 1);
+	var lpn = GaussianDistribution.logProductNormalization(standardNormal, standardNormal);
+
+	// Verified with Ralf Herbrich's F# implementation
+	var expected = -1.2655121234846454;
+	testExt.equalsWithTolerance(test, lpn, expected, ERROR_TOLERANCE,
+		"Expected logProductNormal of 2 normalized gaussians to be " + expected);
+
+	var m1s2 = new GaussianDistribution(1, 2);
+	var m3s4 = new GaussianDistribution(3, 4);
+	lpn = GaussianDistribution.logProductNormalization(m1s2, m3s4);
+	expected = -2.5168046699816684;
+	testExt.equalsWithTolerance(test, lpn, expected, ERROR_TOLERANCE,
+		"Expected logProductNormal of gaussians to be " + expected);
+
+	test.done();
+};

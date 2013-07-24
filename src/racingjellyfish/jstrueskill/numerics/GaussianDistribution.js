@@ -198,6 +198,18 @@ GaussianDistribution.at = function(x, mean, standardDeviation) {
 	return result;
 };
 
+GaussianDistribution.logProductNormalization = function(left, right) {
+	if (left.getPrecision() === 0 || right.getPrecision() === 0)
+	{
+		return 0;
+	}
+	var varianceSum = left.getVariance() + right.getVariance();
+	var meanDifference = left.getMean() - right.getMean();
+	var logSqrt2Pi = Math.log(Math.sqrt(2 * Math.PI));
+	return -logSqrt2Pi - (Math.log(varianceSum) / 2.0) -
+		(MathUtils.square(meanDifference) / (2.0 * varianceSum));
+};
+
 /**
  * The gaussian representation of a flat line.
  */
