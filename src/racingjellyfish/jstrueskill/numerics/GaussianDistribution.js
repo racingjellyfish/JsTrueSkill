@@ -78,8 +78,8 @@ GaussianDistribution.prototype.getNormalizationConstant = function() {
 /**
  * Multiply this gaussian by the specified gaussian.
  */
-GaussianDistribution.prototype.mult = function(other) {
-	return GaussianDistribution.mult(this, other);
+GaussianDistribution.prototype.multiply = function(other) {
+	return GaussianDistribution.multiply(this, other);
 };
 
 GaussianDistribution.prototype.toString = function() {
@@ -258,7 +258,7 @@ GaussianDistribution.at = function(x, mean, standardDeviation) {
 	return result;
 };
 
-GaussianDistribution.mult = function(left, right) {
+GaussianDistribution.multiply = function(left, right) {
 	// Although we could use equations from
 	// http://www.tina-vision.net/tina-knoppix/tina-memo/2003-003.pdf
 	// for multiplication, the precision mean ones are easier to write :)

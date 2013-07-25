@@ -55,8 +55,8 @@ exports.testMultiplication = function(test) {
 	var standardNormal = new GaussianDistribution(0, 1);
 	var shiftedGaussian = new GaussianDistribution(2, 3);
 
-	var product0 = GaussianDistribution.mult(standardNormal, shiftedGaussian);
-	var product1 = standardNormal.mult(shiftedGaussian);
+	var product0 = GaussianDistribution.multiply(standardNormal, shiftedGaussian);
+	var product1 = standardNormal.multiply(shiftedGaussian);
 
 	var expected = 0.2;
 	testExt.equalsWithTolerance(test, product0.getMean(), expected,
@@ -75,8 +75,8 @@ exports.testMultiplication = function(test) {
 	var m4s5 = new GaussianDistribution(4, 5);
 	var m6s7 = new GaussianDistribution(6, 7);
 
-	product0 = GaussianDistribution.mult(m4s5, m6s7);
-	product1 = GaussianDistribution.mult(m4s5, m6s7);
+	product0 = GaussianDistribution.multiply(m4s5, m6s7);
+	product1 = GaussianDistribution.multiply(m4s5, m6s7);
 
 	expected = (4 * MathUtils.square(7) + 6 * MathUtils.square(5)) /
 		(MathUtils.square(5) + MathUtils.square(7));
