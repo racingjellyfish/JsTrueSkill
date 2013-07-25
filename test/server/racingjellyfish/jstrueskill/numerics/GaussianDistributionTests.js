@@ -87,6 +87,24 @@ exports.testAt = function(test) {
 	test.done();
 };
 
+exports.testAbsoluteDifference = function(test) {
+	// Verified with Ralf Herbrich's F# implementation
+	var standardNormal = new GaussianDistribution(0, 1);
+	var absDiff = GaussianDistribution.absoluteDifference(standardNormal, standardNormal);
+	var expected = 0.0;
+	testExt.equalsWithTolerance(test, absDiff, expected,
+		ERROR_TOLERANCE, "Expected standard normal absolute difference to be " + expected);
+
+	var m1s2 = new GaussianDistribution(1, 2);
+	var m3s4 = new GaussianDistribution(3, 4);
+	absDiff = GaussianDistribution.absoluteDifference(m1s2, m3s4);
+	expected = 0.4330127018922193;
+	testExt.equalsWithTolerance(test, absDiff, expected,
+		ERROR_TOLERANCE, "Expected absolute difference to be " + expected);
+
+	test.done();
+};
+
 exports.testMultiplication = function(test) {
 	// I verified this against the formula at
 	// http://www.tina-vision.net/tina-knoppix/tina-memo/2003-003.pdf
@@ -131,6 +149,37 @@ exports.testMultiplication = function(test) {
 	testExt.equalsWithTolerance(test, product0.getStandardDeviation(),
 		product1.getStandardDeviation(), ERROR_TOLERANCE,
 		"Expected product gaussian standardDeviations to be " + expected);
+
+exports.testDivision = function(test) {
+	// Since the multiplication was worked out by hand, we use the same
+	// numbers but work backwards
+	var product = new GaussianDistribution(0.2, 3.0 / Math.sqrt(10));
+	var standardNormal = new GaussianDistribution(0, 1);
+
+	var productDividedByStandardNormal = GaussianDistribution.divide(product, standardNormal);
+	var expected = 2.0;
+	testExt.equalsWithTolerance(test, productDividedByStandardNormal.getMean(),
+		expected, ERROR_TOLERANCE,
+		"Expected division result gaussian mean to be " + expected);
+	expected = 3.0;
+	testExt.equalsWithTolerance(test, productDividedByStandardNormal.getStandardDeviation(),
+		expected, ERROR_TOLERANCE,
+		"Expected division result gaussian standardDeviation to be " + expected);
+
+	product = new GaussianDistribution((4 * MathUtils.square(7) +
+		6 * MathUtils.square(5)) / (MathUtils.square(5) +
+		MathUtils.square(7)), Math.sqrt(((MathUtils.square(5) *
+			MathUtils.square(7)) / (MathUtils.square(5) + MathUtils.square(7)))));
+	var m4s5 = new GaussianDistribution(4, 5);
+	var productDividedByM4S5 = GaussianDistribution.divide(product, m4s5);
+	expected = 6.0;
+	testExt.equalsWithTolerance(test, productDividedByM4S5.getMean(),
+		expected, ERROR_TOLERANCE,
+		"Expected division result gaussian mean to be " + expected);
+	expected = 7.0;
+	testExt.equalsWithTolerance(test, productDividedByM4S5.getStandardDeviation(),
+		expected, ERROR_TOLERANCE,
+		"Expected division result gaussian standardDeviation to be " + expected);
 
 	test.done();
 };

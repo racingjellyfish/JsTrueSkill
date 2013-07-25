@@ -272,12 +272,26 @@ GaussianDistribution.at = function(x, mean, standardDeviation) {
 	return result;
 };
 
+/**
+ * Computes the absolute difference between two gaussians.
+ */
+GaussianDistribution.absoluteDifference = function(left, right) {
+	return Math.max(Math.abs(left.getPrecisionMean() - right.getPrecisionMean()),
+		Math.sqrt(Math.abs(left.getPrecision() - right.getPrecision())));
+};
+
 GaussianDistribution.multiply = function(left, right) {
 	// Although we could use equations from
 	// http://www.tina-vision.net/tina-knoppix/tina-memo/2003-003.pdf
 	// for multiplication, the precision mean ones are easier to write :)
 	return GaussianDistribution.fromPrecisionMean(left.getPrecisionMean() +
 		right.getPrecisionMean(), left.getPrecision() + right.getPrecision());
+};
+
+GaussianDistribution.divide = function(numerator, denominator) {
+	return GaussianDistribution.fromPrecisionMean(numerator.getPrecisionMean() -
+		denominator.getPrecisionMean(), numerator.getPrecision() -
+		denominator.getPrecision());
 };
 
 GaussianDistribution.logProductNormalization = function(left, right) {
