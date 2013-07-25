@@ -18,6 +18,44 @@ exports.testBasicValues = function(test) {
 	test.done();
 };
 
+exports.testConstructors = function(test) {
+	var gaussian = new GaussianDistribution(2, 5);
+	var other = GaussianDistribution.fromGaussian(gaussian);
+
+	test.equal(other.getMean(), 2, "Expected mean == 1");
+	test.equal(other.getStandardDeviation(), 5, "Expected std == 5");
+	test.equal(other.getVariance(), 25, "Expected var == 25");
+	test.equal(other.getPrecision(), 0.04, "Expected precision == 0.04");
+	test.equal(other.getPrecisionMean(), 0.08, "Expected precision mean == 0.08");
+
+	// TODO replace when Rating has been implemented...
+	var rating = {
+		getMean: function() {
+			return 2.0;
+		},
+		getStandardDeviation: function() {
+			return 5.0;
+		}
+	};
+	other = GaussianDistribution.fromRating(rating);
+
+	test.equal(other.getMean(), 2, "Expected mean == 1");
+	test.equal(other.getStandardDeviation(), 5, "Expected std == 5");
+	test.equal(other.getVariance(), 25, "Expected var == 25");
+	test.equal(other.getPrecision(), 0.04, "Expected precision == 0.04");
+	test.equal(other.getPrecisionMean(), 0.08, "Expected precision mean == 0.08");
+
+	other = GaussianDistribution.fromPrecisionMean(0.08, 0.04);
+
+	test.equal(other.getMean(), 2, "Expected mean == 1");
+	test.equal(other.getStandardDeviation(), 5, "Expected std == 5");
+	test.equal(other.getVariance(), 25, "Expected var == 25");
+	test.equal(other.getPrecision(), 0.04, "Expected precision == 0.04");
+	test.equal(other.getPrecisionMean(), 0.08, "Expected precision mean == 0.08");
+
+	test.done();
+};
+
 exports.testCumulativeTo = function(test) {
 	// Verified with WolframAlpha
 	// (e.g. http://www.wolframalpha.com/input/?i=CDF%5BNormalDistribution%5B0%2C1%5D%2C+0.5%5D )

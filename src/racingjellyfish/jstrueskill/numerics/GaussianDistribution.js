@@ -122,8 +122,15 @@ GaussianDistribution.prototype.equals = function(other) {
 /**
  * Construct from another gaussian.
  */
-GaussianDistribution.atLeast = function(gaussian) {
+GaussianDistribution.fromGaussian = function(gaussian) {
 	return new GaussianDistribution(gaussian.getMean(), gaussian.getStandardDeviation());
+};
+
+/**
+ * Construct from a Rating.
+ */
+GaussianDistribution.fromRating = function(rating) {
+	return new GaussianDistribution(rating.getMean(), rating.getStandardDeviation());
 };
 
 /**
@@ -132,6 +139,13 @@ GaussianDistribution.atLeast = function(gaussian) {
 GaussianDistribution.fromPrecisionMean = function(precisionMean, precision) {
 	return new GaussianDistribution(precisionMean / precision, Math.sqrt(1.0 / precision),
 		1.0 / precision, precision, precisionMean);
+};
+
+/**
+ * The gaussian representation of a flat line.
+ */
+GaussianDistribution.uniform = function() {
+	return new GaussianDistribution.fromPrecisionMean(0, 0);
 };
 
 /**
@@ -289,13 +303,6 @@ GaussianDistribution.logRatioNormalization = function(numerator, denominator) {
 	return Math.log(denominator.getVariance()) + logSqrt2Pi -
 		Math.log(varianceDifference) / 2.0 +
 		MathUtils.square(meanDifference) / (2 * varianceDifference);
-};
-
-/**
- * The gaussian representation of a flat line.
- */
-GaussianDistribution.uniform = function() {
-	return new GaussianDistribution.fromPrecisionMean(0, 0);
 };
 
 module.exports = GaussianDistribution;
