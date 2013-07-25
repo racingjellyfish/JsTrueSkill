@@ -1,8 +1,6 @@
 var MathUtils = require('./MathUtils');
 var square = MathUtils.square;
 
-var INV_SQRT_2 = -0.7071067811865476;
-
 /**
  * Immutable representation of the gaussian distribution of one variable. Not normalized:
  *
@@ -153,7 +151,7 @@ GaussianDistribution.cumulativeTo = function(x, mean, standardDeviation) {
 		standardDeviation = 1;
 	}
 
-	var result = GaussianDistribution.errorFunctionCumulativeTo(INV_SQRT_2 * x);
+	var result = GaussianDistribution.errorFunctionCumulativeTo(-MathUtils.INV_SQRT_2 * x);
 	return 0.5 * result;
 };
 

@@ -1,6 +1,8 @@
 /**
- * Some useful functions.
+ * Some useful values and functions.
  */
+exports.INV_SQRT_2 = 1 / Math.sqrt(2);
+
 exports.square = function(value) {
 	return value * value;
 };
