@@ -140,7 +140,7 @@ exports.testMultiplication = function(test) {
 		ERROR_TOLERANCE, "Expected product gaussian mean to be " + expected);
 	testExt.equalsWithTolerance(test, product0.getMean(),
 		product1.getMean(), ERROR_TOLERANCE,
-		"Expected product gaussian means to be " + expected);
+		"Expected product gaussian mean to be " + expected);
 
 	expected = Math.sqrt(((MathUtils.square(5) * MathUtils.square(7)) /
 		(MathUtils.square(5) + MathUtils.square(7))));
@@ -148,7 +148,10 @@ exports.testMultiplication = function(test) {
 		ERROR_TOLERANCE, "Expected product gaussian standardDeviation to be " + expected);
 	testExt.equalsWithTolerance(test, product0.getStandardDeviation(),
 		product1.getStandardDeviation(), ERROR_TOLERANCE,
-		"Expected product gaussian standardDeviations to be " + expected);
+		"Expected product gaussian standardDeviationsto be " + expected);
+
+	test.done();
+};
 
 exports.testDivision = function(test) {
 	// Since the multiplication was worked out by hand, we use the same
@@ -216,4 +219,3 @@ exports.testLogRatioNormalization = function(test) {
 
 	test.done();
 };
-
