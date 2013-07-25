@@ -27,7 +27,7 @@ exports.testSetValue = function(test) {
 };
 
 exports.testFormattedName = function(test) {
-	var variable = new Variable(-1, '%s', 'Test');
+	var variable = new Variable(-1, '%s', ['Test']);
 
 	expected = 'Variable[Test]';
 	test.equal(variable.toString(), expected, "Expected name to be: " + expected);
