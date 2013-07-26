@@ -27,11 +27,15 @@ var Factor = function(nameTemplate, templateArgs) {
 };
 
 Factor.prototype.createVariableToMessageBinding = function(variable, message) {
-    this.messages.push(message);
-    this.messageToVariableBinding[message] = variable;
-    this.variables.push(variable);
+	return this._createVariableToMessageBinding(variable, message);
+};
 
-    return message;
+Factor.prototype._createVariableToMessageBinding = function(variable, message) {
+	this.messages.push(message);
+	this.messageToVariableBinding[message] = variable;
+	this.variables.push(variable);
+
+	return message;
 };
 
 Factor.prototype.getNumberOfMessages = function() {
