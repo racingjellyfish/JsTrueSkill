@@ -62,10 +62,10 @@ Factor.prototype.getMessages = function() {
  * Resets the marginal of the variables a factor is connected to.
  */
 Factor.prototype.resetMarginals = function() {
-    for (var index = 0; index < this.messages.length; index++) {
-        var variable = this.messageToVariableBinding[this.messages[index]];
-        variable.resetToPrior();
-    }
+	for (var index = 0; index < this.messages.length; index++) {
+		var variable = this.messageToVariableBinding[this.messages[index]];
+		variable.resetToPrior();
+	}
 };
 
 /**
@@ -89,10 +89,10 @@ Factor.prototype.updateMessage = function(messageIndex) {
  * constant.
  */
 Factor.prototype.sendMessage = function(messageIndex) {
-    if (arguments.length > 1) {
-        // TODO sub-classes need to implement this?
-        throw new Error('UnsupportedOperationException');
-    }
+	if (arguments.length > 1) {
+		// TODO sub-classes need to implement this?
+		throw new Error('UnsupportedOperationException');
+	}
 
 	Guard.argumentIsValidIndex(messageIndex, this.messages.size(), "messageIndex");
 
