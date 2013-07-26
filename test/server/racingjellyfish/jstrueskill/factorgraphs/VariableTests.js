@@ -8,11 +8,6 @@ exports.testBasicValues = function(test) {
 	expected = 'Variable[Test]';
 	test.equal(variable.toString(), expected, "Expected name to be: " + expected);
 
-	variable.setValue(1);
-
-	expected = 1;
-	test.equal(variable.getValue(), expected, "Expected value to be: " + expected);
-
 	test.done();
 };
 
@@ -29,7 +24,7 @@ exports.testSetValue = function(test) {
 exports.testFormattedName = function(test) {
 	var variable = new Variable(-1, '%s', ['Test']);
 
-	expected = 'Variable[Test]';
+	var expected = 'Variable[Test]';
 	test.equal(variable.toString(), expected, "Expected name to be: " + expected);
 
 	test.done();
