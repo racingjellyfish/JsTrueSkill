@@ -12,8 +12,8 @@ var KeyedVariableFactory = function(variablePriorInitializer) {
 
 KeyedVariableFactory.prototype = new VariableFactory();
 
-VariableFactory.prototype.createKeyedVariable = function(key, nameTemplate, formatArgs) {
-	return new KeyedVariable(key, this.variablePriorInitializer.call(), nameTemplate, formatArgs);
+VariableFactory.prototype.createKeyedVariable = function(key, nameTemplate, templateArgs) {
+	return new KeyedVariable(key, this.variablePriorInitializer.call(), nameTemplate, templateArgs);
 };
 
 module.exports = KeyedVariableFactory;

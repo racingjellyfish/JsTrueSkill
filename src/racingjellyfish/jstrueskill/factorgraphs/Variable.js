@@ -4,15 +4,15 @@ var util = require('util');
  * Constructor for a prior and a name template, remaining arguments are used to
  * generate the variable name from the template.
  */
-var Variable = function(prior, nameTemplate, formatArgs) {
+var Variable = function(prior, nameTemplate, templateArgs) {
 	/** The prior of this variable */
 	this.prior = prior;
 
 	/** The name of the variable */
-	if (formatArgs === undefined) {
+	if (templateArgs === undefined) {
 		this.varName = "Variable[" + nameTemplate + "]";
 	} else {
-		this.varName = "Variable[" + util.format(nameTemplate, formatArgs) + "]";
+		this.varName = "Variable[" + util.format(nameTemplate, templateArgs) + "]";
 	}
 
 	this.resetToPrior();

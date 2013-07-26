@@ -9,8 +9,8 @@ var VariableFactory = function(variablePriorInitializer) {
 	this.variablePriorInitializer = variablePriorInitializer;
 };
 
-VariableFactory.prototype.createBasicVariable = function(nameTemplate, formatArgs) {
-	return new Variable(this.variablePriorInitializer.call(), nameTemplate, formatArgs);
+VariableFactory.prototype.createBasicVariable = function(nameTemplate, templateArgs) {
+	return new Variable(this.variablePriorInitializer.call(), nameTemplate, templateArgs);
 };
 
 module.exports = VariableFactory;

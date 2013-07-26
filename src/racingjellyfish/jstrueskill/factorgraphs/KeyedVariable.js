@@ -3,8 +3,8 @@ var Variable = require('./Variable');
 /**
  * Constructor with a key, prior and name template.
  */
-var KeyedVariable = function(key, prior, nameTemplate, formatArgs) {
-	Variable.call(this, prior, nameTemplate, formatArgs);
+var KeyedVariable = function(key, prior, nameTemplate, templateArgs) {
+	Variable.call(this, prior, nameTemplate, templateArgs);
 
 	this.key = key;
 };
