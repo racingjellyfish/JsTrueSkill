@@ -5,7 +5,7 @@ var Variable = require('../../factorgraphs/Variable');
 
 var GaussianFactor = function(factorName) {
 	Factor.call(this, factorName);
-}
+};
 
 GaussianFactor.prototype = new Factor();
 
