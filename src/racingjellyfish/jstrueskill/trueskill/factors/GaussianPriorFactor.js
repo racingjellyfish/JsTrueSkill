@@ -15,7 +15,7 @@ var GaussianPriorFactor = function(mean, variance, variable) {
 	this.newMessage = new GaussianDistribution(mean, Math.sqrt(variance));
 	this.createVariableToMessageBinding(variable,
 		new Message(GaussianDistribution.fromPrecisionMean(0, 0), "message from %s to %s",
-		   this, variable));
+		this, variable));
 };
 
 GaussianPriorFactor.prototype = new GaussianFactor();
