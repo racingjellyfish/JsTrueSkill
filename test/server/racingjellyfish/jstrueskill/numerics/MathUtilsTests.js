@@ -3,11 +3,16 @@ var MathUtils = require('../../../../../src/racingjellyfish/jstrueskill/numerics
 exports.testSquare = function(test) {
 	test.expect(5);
 
-	test.equal(MathUtils.square(-1), 1, "Expected square(-1) == 1");
-	test.equal(MathUtils.square(1), 1, "Expected square(1) == 1");
-	test.equal(MathUtils.square(-2), 4, "Expected square(-2) == 4");
-	test.equal(MathUtils.square(2), 4, "Expected square(2) == 4");
-	test.equal(MathUtils.square(0), 0, "Expected square(0) == 0");
+	var expected = 1;
+	test.equal(MathUtils.square(-1), expected, "Expected square(-1) == " + expected);
+	expected = 1;
+	test.equal(MathUtils.square(1), expected, "Expected square(1) == " + expected);
+	expected = 4;
+	test.equal(MathUtils.square(-2), expected, "Expected square(-2) == " + expected);
+	expected = 4;
+	test.equal(MathUtils.square(2), expected, "Expected square(2) == " + expected);
+	expected = 0;
+	test.equal(MathUtils.square(0), expected, "Expected square(0) == " + expected);
 
 	test.done();
 };
@@ -20,13 +25,35 @@ exports.testMean = function(test) {
 	test.throws((function () { MathUtils.mean(collection); }), "Expected mean([]) to throw");
 
 	collection.push(1);
-	test.equal(MathUtils.mean(collection), 1, "Expected mean([1]) == 1");
+	var expected = 1;
+	test.equal(MathUtils.mean(collection), expected, "Expected mean([1]) == " + expected);
 
 	collection.push(2);
-	test.equal(MathUtils.mean(collection), 1.5, "Expected mean([1, 2]) == 1.5");
+	expected = 1.5;
+	test.equal(MathUtils.mean(collection), expected, "Expected mean([1, 2]) == " + expected);
 
 	collection.push(6);
-	test.equal(MathUtils.mean(collection), 3, "Expected mean([1, 2, 6]) == 3");
+	expected = 3;
+	test.equal(MathUtils.mean(collection), expected, "Expected mean([1, 2, 6]) == " + expected);
+
+	test.done();
+};
+
+exports.testArrayCopy = function(test) {
+	test.expect(2);
+
+	var source = [1, 2, 3];
+	var dest = [3, 4, 5];
+
+	var expected = [1, 2, 3];
+	var actual = MathUtils.arrayCopy(source, 0, dest, 0, source.length);
+	test.deepEqual(actual, source, "Expected copied array to be " + expected);
+
+	dest = [3, 4, 5, 6, 7];
+
+	expected = [3, 4, 1, 2, 3];
+	actual = MathUtils.arrayCopy(source, 0, dest, 2, source.length);
+	test.deepEqual(actual, expected, "Expected copied array to be " + expected);
 
 	test.done();
 };

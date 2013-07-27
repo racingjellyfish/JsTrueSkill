@@ -19,3 +19,11 @@ exports.mean = function(collection) {
 
 	return total / collection.length;
 };
+
+exports.arrayCopy = function(src, srcPos, dest, destPos, length) {
+    for (var index = 0; index < length; index++) {
+        dest[destPos + index] = src[srcPos + index];
+    }
+
+    return dest;
+};
