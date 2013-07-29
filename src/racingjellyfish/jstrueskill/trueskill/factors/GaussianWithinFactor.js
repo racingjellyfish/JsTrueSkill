@@ -1,4 +1,4 @@
-var MathUtils = require('../numerics/MathUtils');
+var MathUtils = require('../../numerics/MathUtils');
 var util = require('util');
 var GaussianDistribution = require('../../numerics/GaussianDistribution');
 var GaussianFactor = require('./GaussianFactor');

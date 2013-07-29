@@ -6,8 +6,8 @@ var ScheduleStep = require('../../factorgraphs/ScheduleStep');
 var Variable = require('../../factorgraphs/Variable');
 var GaussianDistribution = require('../../numerics/GaussianDistribution');
 var MathUtils = require('../../numerics/MathUtils');
-var TrueSkillFactorGraph = require('../TrueSkillFactorGraph');
 var GaussianPriorFactor = require('../factors/GaussianPriorFactor');
+var TrueSkillFactorGraphLayer = require('./TrueSkillFactorGraphLayer');
 
 // We intentionally have no Posterior schedule since the only purpose here is to...
 var PlayerPriorValuesToSkillsLayer = function(parentGraph, teams) {

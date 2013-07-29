@@ -1,5 +1,5 @@
 var util = require('util');
-var Guard = require('../Guard');
+var Guard = require('../../Guard');
 var GaussianDistribution = require('../../numerics/GaussianDistribution');
 var GaussianFactor = require('./GaussianFactor');
 var Message = require('../../factorgraphs/Message');

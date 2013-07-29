@@ -4,8 +4,8 @@ var Schedule = require('../../factorgraphs/Schedule');
 var ScheduleStep = require('../../factorgraphs/ScheduleStep');
 var Variable = require('../../factorgraphs/Variable');
 var GaussianDistribution = require('../../numerics/GaussianDistribution');
-var TrueSkillFactorGraph = require('../TrueSkillFactorGraph');
 var GaussianWeightedSumFactor = require('../factors/GaussianWeightedSumFactor');
+var TrueSkillFactorGraphLayer = require('./TrueSkillFactorGraphLayer');
 
 // The whole purpose of this is to do a loop on the bottom
 var PlayerPerformancesToTeamPerformancesLayer = function(parentGraph) {

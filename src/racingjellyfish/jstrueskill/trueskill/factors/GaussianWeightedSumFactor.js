@@ -1,6 +1,6 @@
-var MathUtils = require('../numerics/MathUtils');
+var MathUtils = require('../../numerics/MathUtils');
 var util = require('util');
-var Guard = require('../Guard');
+var Guard = require('../../Guard');
 var GaussianDistribution = require('../../numerics/GaussianDistribution');
 var GaussianFactor = require('./GaussianFactor');
 var Message = require('../../factorgraphs/Message');
@@ -33,7 +33,7 @@ var GaussianWeightedSumFactor = function(sumVariable, variablesToSum, variableWe
 	this.weights[0] = new Array(variableWeights.length);
 	MathUtils.arrayCopy(variableWeights, 0,  this.weights[0], 0, variableWeights.length);
 	this.weightsSquared[0] = new Array(variableWeights.length);
-	for (var i = 0; i < _Weights[0].length; i++) {
+	for (var i = 0; i < this.weights[0].length; i++) {
 		this.weightsSquared[0][i] = MathUtils.square(this.weights[0][i]);
 	}
 

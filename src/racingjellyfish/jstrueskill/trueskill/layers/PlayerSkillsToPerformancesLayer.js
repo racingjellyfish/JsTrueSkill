@@ -4,8 +4,8 @@ var Schedule = require('../../factorgraphs/Schedule');
 var ScheduleStep = require('../../factorgraphs/ScheduleStep');
 var GaussianDistribution = require('../../numerics/GaussianDistribution');
 var MathUtils = require('../../numerics/MathUtils');
-var TrueSkillFactorGraph = require('../TrueSkillFactorGraph');
 var GaussianLikelihoodFactor = require('../factors/GaussianLikelihoodFactor');
+var TrueSkillFactorGraphLayer = require('./TrueSkillFactorGraphLayer');
 
 // We intentionally have no Posterior schedule since the only purpose here is to...
 var PlayerSkillsToPerformancesLayer = function(parentGraph, teams) {

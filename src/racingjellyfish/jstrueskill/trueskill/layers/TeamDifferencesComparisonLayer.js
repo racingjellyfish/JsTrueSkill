@@ -2,16 +2,16 @@ var DefaultVariable = require('../../factorgraphs/DefaultVariable');
 var Variable = require('../../factorgraphs/Variable');
 var GaussianDistribution = require('../../numerics/GaussianDistribution');
 var DrawMargin = require('../DrawMargin');
-var TrueSkillFactorGraph = require('../TrueSkillFactorGraph');
 var GaussianPriorFactor = require('../factors/GaussianPriorFactor');
 var GaussianGreaterThanFactor = require('../factors/GaussianGreaterThanFactor');
 var GaussianWithinFactor = require('../factors/GaussianWithinFactor');
+var TrueSkillFactorGraphLayer = require('./TrueSkillFactorGraphLayer');
 
 var TeamDifferencesComparisonLayer = function(parentGraph, teamRanks) {
     TrueSkillFactorGraphLayer.call(this, parentGraph);
 
     this.teamRanks = teamRanks;
-    var gameInfo = this.parentFactorGraph.getGameInfo();
+    var gameInfo = parentGraph.getGameInfo();
     this.epsilon = DrawMargin.getDrawMarginFromDrawProbability(gameInfo.getDrawProbability(), gameInfo.getBeta());
 };
 

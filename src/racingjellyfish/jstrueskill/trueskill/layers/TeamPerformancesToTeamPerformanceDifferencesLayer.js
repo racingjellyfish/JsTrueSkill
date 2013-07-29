@@ -1,7 +1,7 @@
 var Variable = require('../../factorgraphs/Variable');
 var GaussianDistribution = require('../../numerics/GaussianDistribution');
-var TrueSkillFactorGraph = require('../TrueSkillFactorGraph');
 var GaussianWeightedSumFactor = require('../factors/GaussianWeightedSumFactor');
+var TrueSkillFactorGraphLayer = require('./TrueSkillFactorGraphLayer');
 
 var TeamPerformancesToTeamPerformanceDifferencesLayer = function(parentGraph, teams) {
     TrueSkillFactorGraphLayer.call(this, parentGraph);
