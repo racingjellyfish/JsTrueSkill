@@ -1,3 +1,5 @@
+var Schedule = require('./Schedule');
+
 var ScheduleSequence = function(scheduleName, schedules) {
     Schedule.call(this, scheduleName);
 

@@ -1,3 +1,5 @@
+var Schedule = require('./Schedule');
+
 var ScheduleStep = function(scheduleName, factor, scheduleIndex) {
 	Schedule.call(this, scheduleName);
 
