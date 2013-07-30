@@ -20,19 +20,16 @@ var Rating = function(mean, standardDeviation, conservativeStandardDeviationMult
 		conservativeStandardDeviationMultiplier =
 			defaultConservativeStandardDeviationMultiplier;
 	}
+	this.conservativeStandardDeviationMultiplier = conservativeStandardDeviationMultiplier;
 
 	/** The statistical mean value of the rating (also known as μ). */
 	this.mean = mean;
+
 	/** The standard deviation (the spread) of the rating. This is also known as σ. */
 	this.standardDeviation = standardDeviation;
-	this.conservativeStandardDeviationMultiplier = conservativeStandardDeviationMultiplier;
+
 	/** A conservative estimate of skill based on the mean and standard deviation. */
 	this.conservativeRating = mean - conservativeStandardDeviationMultiplier * standardDeviation;
-};
-
-/** The variance of the rating (standard deviation squared) */
-Rating.prototype.getVariance = function() {
-	return MathUtils.square(getStandardDeviation());
 };
 
 Rating.prototype.getMean = function() {
@@ -43,6 +40,11 @@ Rating.prototype.getStandardDeviation = function() {
 	return this.standardDeviation;
 };
 
+/** The variance of the rating (standard deviation squared) */
+Rating.prototype.getVariance = function() {
+	return MathUtils.square(this.getStandardDeviation());
+};
+
 Rating.prototype.getConservativeRating = function() {
 	return this.conservativeRating;
 };
@@ -51,6 +53,7 @@ Rating.prototype.getConservativeStandardDeviationMultiplier = function() {
 	return this.conservativeStandardDeviationMultiplier;
 };
 
+// TODO are prior/fullPosterior gaussians?
 Rating.prototype.partialUpdate = function(prior, fullPosterior, updatePercentage) {
 	var priorGaussian = new GaussianDistribution(prior);
 	var posteriorGaussian = new GaussianDistribution(fullPosterior);

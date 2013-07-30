@@ -5,3 +5,41 @@ exports.testNoConstructor = function(test) {
 
 	test.done();
 };
+
+exports.testPartialPlayNotSupported = function(test) {
+	var player = {};
+
+	var expected = 1;
+	test.equal(PartialPlay.getPartialPlayPercentage(player), expected,
+		"Expected partial play to be " + expected);
+
+	test.done();
+};
+
+exports.testMinimumPartialPlay = function(test) {
+	var player = {
+		getPartialPlayPercentage: function() {
+			return 0.0;
+		}
+	};
+
+	var expected = 0.0001;
+	test.equal(PartialPlay.getPartialPlayPercentage(player), expected,
+		"Expected partial play to be " + expected);
+
+	test.done();
+};
+
+exports.testPartialPlay = function(test) {
+	var player = {
+		getPartialPlayPercentage: function() {
+			return 0.5;
+		}
+	};
+
+	var expected = 0.5;
+	test.equal(PartialPlay.getPartialPlayPercentage(player), expected,
+		"Expected partial play to be " + expected);
+
+	test.done();
+};

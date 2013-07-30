@@ -2,8 +2,8 @@
  * A set of utility functions for checking the validity of arguments.
  */
 exports.argumentNotNull = function(value, parameterName) {
-    if (value === null) {
-        throw new Error('Null value: ' + parameterName);
+    if (value === null || value === undefined) {
+        throw new Error('Null or undefined value: ' + parameterName);
     }
 };
 
