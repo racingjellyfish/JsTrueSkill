@@ -1,7 +1,9 @@
-var MathUtils =
-	require('../../../../../src/racingjellyfish/jstrueskill/numerics/MathUtils');
+var Rating =
+	require('../../../../../src/racingjellyfish/jstrueskill/Rating');
 var GaussianDistribution =
 	require('../../../../../src/racingjellyfish/jstrueskill/numerics/GaussianDistribution');
+var MathUtils =
+	require('../../../../../src/racingjellyfish/jstrueskill/numerics/MathUtils');
 var testExt = require('../../../../libs/nodeunit-ext');
 
 var ERROR_TOLERANCE = 0.000001;
@@ -28,15 +30,7 @@ exports.testConstructors = function(test) {
 	test.equal(other.getPrecision(), 0.04, "Expected precision == 0.04");
 	test.equal(other.getPrecisionMean(), 0.08, "Expected precision mean == 0.08");
 
-	// TODO replace when Rating has been implemented...
-	var rating = {
-		getMean: function() {
-			return 2.0;
-		},
-		getStandardDeviation: function() {
-			return 5.0;
-		}
-	};
+	var rating = new Rating(2.0, 5.0);
 	other = GaussianDistribution.fromRating(rating);
 
 	test.equal(other.getMean(), 2, "Expected mean == 1");
