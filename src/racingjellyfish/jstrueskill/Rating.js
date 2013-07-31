@@ -96,7 +96,8 @@ Rating.prototype.equals = function(other) {
 
 Rating.prototype.toString = function() {
 	// As a debug helper, display a localized rating:
-	return util.format("Mean(μ)=%s, Std-Dev(σ)=%s", mean, standardDeviation);
+	return util.format("Mean(μ)=%s, Std-Dev(σ)=%s", this.mean,
+		this.standardDeviation);
 };
 
 

@@ -28,6 +28,15 @@ exports.testBasicValues = function(test) {
 	test.done();
 };
 
+exports.testToString = function(test) {
+	var rating = new Rating(0, 2);
+
+	var expected = 'Mean(μ)=0, Std-Dev(σ)=2';
+	test.equal(rating.toString(), expected, "Expected toString to be " + expected);
+
+	test.done();
+};
+
 exports.testDefaultStandardDeviationMultiplier = function(test) {
 	var rating = new Rating(0, 1);
 
