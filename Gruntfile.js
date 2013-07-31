@@ -62,11 +62,11 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.loadNpmTasks('grunt-contrib-watch');
 
-	grunt.registerTask('uitest', ['jshint', 'connect', 'qunit']);
+	grunt.registerTask('test-ui', ['jshint', 'connect', 'qunit']);
 
-	grunt.registerTask('servertest', ['jshint', 'nodeunit']);
+	grunt.registerTask('test-server', ['jshint', 'nodeunit']);
 
-	grunt.registerTask('default', ['jshint', 'servertest', 'connect', 'qunit', 'concat', 'uglify']);
+	grunt.registerTask('default', ['jshint', 'nodeunit', 'connect', 'qunit', 'concat', 'uglify']);
 
 	grunt.event.on('qunit.spawn', function (url) {
 		grunt.log.ok("\nRunning ui test: " + url);
