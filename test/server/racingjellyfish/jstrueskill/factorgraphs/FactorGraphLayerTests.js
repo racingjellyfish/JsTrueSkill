@@ -4,11 +4,6 @@ exports.testBasicValues = function(test) {
 	var parentFactorGraph = {};
 	var factorGraphLayer = new FactorGraphLayer(parentFactorGraph);
 
-	var expected = null;
-	test.equal(factorGraphLayer.createPriorSchedule(), expected,
-		"Expected prior schedule to be: " + expected);
-	test.equal(factorGraphLayer.createPosteriorSchedule(), expected,
-		"Expected posterior schedule to be: " + expected);
 	test.equal(factorGraphLayer.getParentFactorGraph(), parentFactorGraph,
 		"Expected parent factor graph to be: " + parentFactorGraph);
 

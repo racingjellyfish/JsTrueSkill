@@ -1,7 +1,10 @@
 var util = require('util');
 var Factor = require('./Factor');
+var FactorGraphLayerBase = require('./FactorGraphLayerBase');
 
 var FactorGraphLayer = function(parentGraph) {
+	FactorGraphLayerBase.call(this);
+
 	this.parentGraph = parentGraph;
 
 	this.localFactors = [];
@@ -9,13 +12,7 @@ var FactorGraphLayer = function(parentGraph) {
 	this.outputVariablesGroups = [];
 };
 
-FactorGraphLayer.prototype.createPriorSchedule = function() {
-    return null;
-};
-
-FactorGraphLayer.prototype.createPosteriorSchedule = function() {
-    return null;
-};
+FactorGraphLayer.prototype = new FactorGraphLayerBase();
 
 FactorGraphLayer.prototype.getParentFactorGraph = function() {
 	return this.parentGraph;
@@ -64,7 +61,7 @@ FactorGraphLayer.prototype.getScheduleSequence = function(itemsToSequence,
 		scheduleName = "Schedule[" + util.format(nameTemplate, templateArgs) + "]";
 	}
 
-    return new ScheduleSequence(scheduleName, itemsToSequence);
+	return new ScheduleSequence(scheduleName, itemsToSequence);
 };
 
 module.exports = FactorGraphLayer;
