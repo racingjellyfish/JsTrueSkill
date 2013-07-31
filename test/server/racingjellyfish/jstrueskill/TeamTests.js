@@ -1,4 +1,5 @@
 var Rating = require('../../../../src/racingjellyfish/jstrueskill/Rating');
+var Player = require('../../../../src/racingjellyfish/jstrueskill/Player');
 var Team = require('../../../../src/racingjellyfish/jstrueskill/Team');
 
 exports.testBasicValues = function(test) {
@@ -9,7 +10,7 @@ exports.testBasicValues = function(test) {
 		'Expected players to be: ' + expected);
 
 	// TODO replace with actual Player when implemented
-	var player = 'Player';
+	var player = new Player('One');
 	team = new Team(player);
 	expected = [];
 	test.deepEqual(team.getPlayers(), expected,

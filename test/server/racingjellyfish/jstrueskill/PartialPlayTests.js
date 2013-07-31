@@ -1,4 +1,5 @@
 var PartialPlay = require('../../../../src/racingjellyfish/jstrueskill/PartialPlay');
+var Player = require('../../../../src/racingjellyfish/jstrueskill/Player');
 
 exports.testNoConstructor = function(test) {
 	test.ok(typeof PartialPlay !== 'function', 'No constructor expected');
@@ -17,11 +18,7 @@ exports.testPartialPlayNotSupported = function(test) {
 };
 
 exports.testMinimumPartialPlay = function(test) {
-	var player = {
-		getPartialPlayPercentage: function() {
-			return 0.0;
-		}
-	};
+	var player = new Player('One', 0, 0);
 
 	var expected = 0.0001;
 	test.equal(PartialPlay.getPartialPlayPercentage(player), expected,
@@ -31,11 +28,7 @@ exports.testMinimumPartialPlay = function(test) {
 };
 
 exports.testPartialPlay = function(test) {
-	var player = {
-		getPartialPlayPercentage: function() {
-			return 0.5;
-		}
-	};
+	var player = new Player('One', 0.5, 0);
 
 	var expected = 0.5;
 	test.equal(PartialPlay.getPartialPlayPercentage(player), expected,
