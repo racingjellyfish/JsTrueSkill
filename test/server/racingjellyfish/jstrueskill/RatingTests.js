@@ -51,9 +51,6 @@ exports.testDefaultStandardDeviationMultiplier = function(test) {
 exports.testPartialUpdate = function(test) {
 	var rating = new Rating(0, 1);
 
-	var expected = 3;
-	test.equal(rating.getConservativeStandardDeviationMultiplier(), expected,
-		"Expected default standard deviation multiplier to be " + expected);
 
 	test.done();
 };
