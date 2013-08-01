@@ -1,6 +1,6 @@
 var TwoPlayerTrueSkillCalculator =
     require('../../../../../src/racingjellyfish/jstrueskill/trueskill/TwoPlayerTrueSkillCalculator');
-var TrueSkillCalculatorTestCases = require('./TrueSkillCalculatorTestCases');
+var TwoPlayerTestCases = require('./TwoPlayerTestCases');
 
 var calculator;
 
@@ -10,18 +10,18 @@ exports.setUp = function(callback) {
 	callback();
 };
 
-exports.testTwoPlayersDrawn = function(test) {
-    TrueSkillCalculatorTestCases.testTwoPlayersDrawn(test, calculator);
+exports.testDrawn = function(test) {
+    TwoPlayerTestCases.testDrawn(test, calculator);
 };
 
-exports.testTwoPlayersNotDrawn = function(test) {
-    TrueSkillCalculatorTestCases.testTwoPlayersNotDrawn(test, calculator);
+exports.testNotDrawn = function(test) {
+    TwoPlayerTestCases.testNotDrawn(test, calculator);
 };
 
 exports.testChessNotDrawn = function(test) {
-    TrueSkillCalculatorTestCases.testChessNotDrawn(test, calculator);
+    TwoPlayerTestCases.testChessNotDrawn(test, calculator);
 };
 
-exports.testOneOnOneMassiveUpsetDraw = function(test) {
-    TrueSkillCalculatorTestCases.testOneOnOneMassiveUpsetDraw(test, calculator);
+exports.testMassiveUpsetDraw = function(test) {
+    TwoPlayerTestCases.testMassiveUpsetDraw(test, calculator);
 };

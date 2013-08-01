@@ -1,12 +1,8 @@
 /**
- * A set of test cases called from a number of different calculator tests.
+ * A set of test cases called from a number of different calculator tests:
  *
- * The 2 player tests are used to test:
  *		TwoPlayerTrueSkillCalculator
  *		TwoTeamTrueSkillCalculator
- *
- * The...
- *
  *
  * Where there are more than 3 digits of precision after the decimal
  * point, then the expected values were calculated using RalfH's F#
@@ -31,7 +27,7 @@ var TestUtil = require('../TestUtil');
 /*
  * Two player tests.
  */
-exports.testTwoPlayersNotDrawn = function(test, calculator) {
+exports.testNotDrawn = function(test, calculator) {
 	var player1 = new Player('1');
 	var player2 = new Player('2');
 	var gameInfo = GameInfo.getDefaultGameInfo();
@@ -56,7 +52,7 @@ exports.testTwoPlayersNotDrawn = function(test, calculator) {
 	test.done();
 };
 
-exports.testTwoPlayersDrawn = function(test, calculator) {
+exports.testDrawn = function(test, calculator) {
 	var player1 = new Player('1');
 	var player2 = new Player('2');
 	var gameInfo = GameInfo.getDefaultGameInfo();
@@ -104,7 +100,7 @@ exports.testChessNotDrawn = function(test, calculator) {
 	test.done();
 };
 
-exports.testOneOnOneMassiveUpsetDraw = function(test, calculator) {
+exports.testMassiveUpsetDraw = function(test, calculator) {
 	var gameInfo = GameInfo.getDefaultGameInfo();
 	var player1 = new Player('1');
 	var team1 = new Team('One', player1, gameInfo.getDefaultRating());
