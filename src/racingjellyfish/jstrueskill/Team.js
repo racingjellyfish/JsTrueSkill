@@ -1,6 +1,7 @@
 /**
  * Helper class for working with a single team.
  */
+var Guard = require('./Guard');
 
 /**
  * Constructs a Team and populates it with the specified player.
@@ -11,7 +12,19 @@
  * @param player The player to add
  * @param rating The rating of the player
  */
-var Team = function(player, rating) {
+var Team = function(id, player, rating) {
+	// check the id
+	Guard.argumentNotNull(id, 'Team ID');
+	if (typeof id != 'string') {
+		throw new Error('Team ID should be a string');
+	}
+
+	// check that we have the correct number of arguments
+	if (!(arguments.length == 1 || arguments.length == 3)) {
+		throw new Error('Incorrect number of arguments: ' + arguments.length);
+	}
+
+	this.id = id;
 	this.players = [];
 	this.playerToRatingMap = {};
 
@@ -46,6 +59,10 @@ Team.prototype.getPlayers = function() {
  */
 Team.prototype.getPlayerRating = function(player) {
 	return this.playerToRatingMap[player];
+};
+
+Team.prototype.toString = function() {
+	return 'Team ' + this.id + ': player count=' + this.players.length;
 };
 
 /**

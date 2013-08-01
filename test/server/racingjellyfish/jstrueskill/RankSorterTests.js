@@ -1,4 +1,7 @@
 var RankSorter = require('../../../../src/racingjellyfish/jstrueskill/RankSorter');
+var GameInfo = require('../../../../src/racingjellyfish/jstrueskill/GameInfo');
+var Player = require('../../../../src/racingjellyfish/jstrueskill/Player');
+var Team = require('../../../../src/racingjellyfish/jstrueskill/Team');
 
 exports.testNoConstructor = function(test) {
 	test.ok(typeof RankSorter !== 'function', 'No constructor expected');
@@ -49,6 +52,30 @@ exports.testSortUnsorted = function(test) {
 	expected = [1, 2, 2, 4, 5];
 	test.deepEqual(sortedResults.ranks, expected,
 		'Expected sorted ranks to be ' + expected);
+
+	test.done();
+};
+
+exports.testTeamSort = function(test) {
+    var player1 = new Player('1');
+    var player2 = new Player('2');
+    var gameInfo = GameInfo.getDefaultGameInfo();
+
+    var team1 = new Team('One', player1, gameInfo.getDefaultRating());
+    var team2 = new Team('Two', player2, gameInfo.getDefaultRating());
+    var teams = Team.concat(team2, team1);
+
+	var ranks = [2, 1];
+
+	var sortedResults = RankSorter.sort(teams, ranks);
+
+	var expected = [1, 2];
+	test.deepEqual(sortedResults.ranks, expected,
+		'Expected sorted ranks to be ' + expected);
+
+	expected = [team1, team2];
+	test.deepEqual(sortedResults.items, expected,
+		'Expected sorted teams to be ' + expected);
 
 	test.done();
 };
