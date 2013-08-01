@@ -46,7 +46,7 @@ TwoPlayerTrueSkillCalculator.prototype.calculateNewRatings = function(gameInfo,
 
 	var results = {};
 	results[winner] = this.calculateNewRating(gameInfo, winnerPreviousRating, loserPreviousRating,
-										 wasDraw ? PairwiseComparison.DRAW : PairwiseComparison.WIN);
+										wasDraw ? PairwiseComparison.DRAW : PairwiseComparison.WIN);
 	results[loser] = this.calculateNewRating(gameInfo, loserPreviousRating, winnerPreviousRating,
 										wasDraw ? PairwiseComparison.DRAW : PairwiseComparison.LOSE);
 
