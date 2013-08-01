@@ -21,7 +21,7 @@ exports.sort = function(items, itemRanks) {
 
 	var sortedResults = {
 		items: items,
-		ranks: itemRanks
+		itemRanks: itemRanks
 	};
 	var lastObserverdRank = 0;
 	var needToSort = false;

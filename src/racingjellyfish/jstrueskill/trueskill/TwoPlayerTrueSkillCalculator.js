@@ -31,6 +31,7 @@ TwoPlayerTrueSkillCalculator.prototype.calculateNewRatings = function(gameInfo,
 	// Make sure things are in order
 	var sortedResults = RankSorter.sort(teams, teamRanks);
 	var sortedTeams = sortedResults.items;
+	var sortedRanks = sortedResults.itemRanks;
 
 	// Since we verified that each team has one player, we know the
 	// player is the first one
@@ -42,7 +43,7 @@ TwoPlayerTrueSkillCalculator.prototype.calculateNewRatings = function(gameInfo,
 	var loser = losingTeam.getPlayers()[0];
 	var loserPreviousRating = losingTeam.getPlayerRating(loser);
 
-	var wasDraw = (teamRanks[0] == teamRanks[1]);
+	var wasDraw = (sortedRanks[0] == sortedRanks[1]);
 
 	var results = {};
 	results[winner] = this.calculateNewRating(gameInfo, winnerPreviousRating, loserPreviousRating,

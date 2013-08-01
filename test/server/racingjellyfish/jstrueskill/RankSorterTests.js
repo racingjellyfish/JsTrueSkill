@@ -33,7 +33,7 @@ exports.testSortAlreadySorted = function(test) {
 		'Expected sorted people to be ' + expected);
 
 	expected = [1, 2, 3];
-	test.deepEqual(sortedResults.ranks, expected,
+	test.deepEqual(sortedResults.itemRanks, expected,
 		'Expected sorted ranks to be ' + expected);
 
 	test.done();
@@ -50,7 +50,7 @@ exports.testSortUnsorted = function(test) {
 		'Expected sorted people to be ' + expected);
 
 	expected = [1, 2, 2, 4, 5];
-	test.deepEqual(sortedResults.ranks, expected,
+	test.deepEqual(sortedResults.itemRanks, expected,
 		'Expected sorted ranks to be ' + expected);
 
 	test.done();
@@ -70,7 +70,7 @@ exports.testTeamSort = function(test) {
 	var sortedResults = RankSorter.sort(teams, ranks);
 
 	var expected = [1, 2];
-	test.deepEqual(sortedResults.ranks, expected,
+	test.deepEqual(sortedResults.itemRanks, expected,
 		'Expected sorted ranks to be ' + expected);
 
 	expected = [team1, team2];
