@@ -34,7 +34,7 @@ exports.testId = function(test) {
 	var team1 = new Team('One');
 	var team2 = new Team('Two');
 
-    var teams = Team.concat(team1, team2);
+	var teams = Team.concat(team1, team2);
 
 	var expected = [team1, team2];
 	test.deepEqual(teams, expected, 'Expected teams to be: ' + expected);
