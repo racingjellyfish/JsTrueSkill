@@ -59,7 +59,7 @@ Team.concat = function() {
 	var teamsList = [];
 
 	for (var i = 0; i < arguments.length; i++) {
-		teamsList.add(arguments[i]);
+		teamsList.push(arguments[i]);
 	}
 
 	return teamsList;
