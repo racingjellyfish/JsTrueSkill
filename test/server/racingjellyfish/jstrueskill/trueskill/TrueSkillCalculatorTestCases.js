@@ -24,6 +24,7 @@
  */
 var GameInfo = require('../../../../../src/racingjellyfish/jstrueskill/GameInfo');
 var Player = require('../../../../../src/racingjellyfish/jstrueskill/Player');
+var Rating = require('../../../../../src/racingjellyfish/jstrueskill/Rating');
 var Team = require('../../../../../src/racingjellyfish/jstrueskill/Team');
 var TestUtil = require('../TestUtil');
 
@@ -54,74 +55,78 @@ exports.testTwoPlayersNotDrawn = function(test, calculator) {
 
 	test.done();
 };
-/*
-exports.testDrawn = function(test) {
-	Player<Integer> player1 = new Player<Integer>(1);
-	Player<Integer> player2 = new Player<Integer>(2);
-	GameInfo gameInfo = GameInfo.getDefaultGameInfo();
 
-	Team team1 = new Team('One', player1, gameInfo.getDefaultRating());
-	Team team2 = new Team('Two', player2, gameInfo.getDefaultRating());
-	Collection<ITeam> teams = Team.concat(team1, team2);
+exports.testTwoPlayersDrawn = function(test, calculator) {
+	var player1 = new Player('1');
+	var player2 = new Player('2');
+	var gameInfo = GameInfo.getDefaultGameInfo();
 
-	Map<IPlayer, Rating> newRatings = calculator.calculateNewRatings(gameInfo, teams, 1, 1);
+	var team1 = new Team('One', player1, gameInfo.getDefaultRating());
+	var team2 = new Team('Two', player2, gameInfo.getDefaultRating());
+	var teams = Team.concat(team1, team2);
 
-	Rating player1NewRating = newRatings.get(player1);
-	assertRating(25.0, 6.4575196623173081, player1NewRating);
+	var newRatings = calculator.calculateNewRatings(gameInfo, teams, [1, 1]);
 
-	Rating player2NewRating = newRatings.get(player2);
-	assertRating(25.0, 6.4575196623173081, player2NewRating);
+	var player1NewRating = newRatings[player1];
+	TestUtil.assertRating(test, 25.0, 6.4575196623173081,
+		player1NewRating);
 
-	assertMatchQuality(0.447, calculator.calculateMatchQuality(gameInfo, teams));
+	var player2NewRating = newRatings[player2];
+	TestUtil.assertRating(test, 25.0, 6.4575196623173081,
+		player2NewRating);
+
+	TestUtil.assertMatchQuality(test, 0.447,
+		calculator.calculateMatchQuality(gameInfo, teams));
 
 	test.done();
 };
 
-exports.testChessNotDrawn = function(test) {
+exports.testChessNotDrawn = function(test, calculator) {
 	// Inspired by a real bug :-)
-	Player<Integer> player1 = new Player<Integer>(1);
-	Player<Integer> player2 = new Player<Integer>(2);
-	GameInfo gameInfo = new GameInfo(1200.0, 1200.0 / 3.0, 200.0, 1200.0 / 300.0, 0.03);
+	var player1 = new Player('1');
+	var player2 = new Player('2');
+	var gameInfo = new GameInfo(1200.0, 1200.0 / 3.0, 200.0, 1200.0 / 300.0, 0.03);
 
-	Team team1 = new Team('One', player1, new Rating(1301.0007, 42.9232));
-	Team team2 = new Team('Two', player2, new Rating(1188.7560, 42.5570));
+	var team1 = new Team('One', player1, new Rating(1301.0007, 42.9232));
+	var team2 = new Team('Two', player2, new Rating(1188.7560, 42.5570));
 
-	Map<IPlayer, Rating> newRatings = calculator.calculateNewRatings(gameInfo, Team.concat(team1, team2), 1, 2);
+	var newRatings = calculator.calculateNewRatings(gameInfo,
+		Team.concat(team1, team2), [1, 2]);
 
-	Rating player1NewRating = newRatings.get(player1);
-	assertRating(1304.7820836053318, 42.843513887848658, player1NewRating);
+	var player1NewRating = newRatings[player1];
+	TestUtil.assertRating(test, 1304.7820836053318, 42.843513887848658,
+		player1NewRating);
 
-	Rating player2NewRating = newRatings.get(player2);
-	assertRating(1185.0383099003536, 42.485604606897752, player2NewRating);
+	var player2NewRating = newRatings[player2];
+	TestUtil.assertRating(test, 1185.0383099003536, 42.485604606897752,
+		player2NewRating);
 
 	test.done();
 };
 
-exports.testOneOnOneMassiveUpsetDraw = function(test) {
-	Player<Integer> player1 = new Player<Integer>(1);
+exports.testOneOnOneMassiveUpsetDraw = function(test, calculator) {
+	var gameInfo = GameInfo.getDefaultGameInfo();
+	var player1 = new Player('1');
+	var team1 = new Team('One', player1, gameInfo.getDefaultRating());
 
-	GameInfo gameInfo = GameInfo.getDefaultGameInfo();
+	var player2 = new Player('2');
+	var team2 = new Team('Two', player2, new Rating(50, 12.5));
 
-	Team team1 = new Team('One').addPlayer(player1, gameInfo.getDefaultRating());
+	var teams = Team.concat(team1, team2);
 
-	Player<Integer> player2 = new Player<Integer>(2);
-
-	Team team2 = new Team('Two').addPlayer(player2, new Rating(50, 12.5));
-
-	Collection<ITeam> teams = Team.concat(team1, team2);
-
-	Map<IPlayer, Rating> newRatingsWinLose = calculator.calculateNewRatings(gameInfo, teams, 1, 1);
+	var newRatingsWinLose = calculator.calculateNewRatings(gameInfo, teams,
+		[1, 1]);
 
 	// Winners
-	assertRating(31.662, 7.137, newRatingsWinLose.get(player1));
+	TestUtil.assertRating(test, 31.662, 7.137, newRatingsWinLose[player1]);
 
 	// Losers
-	assertRating(35.010, 7.910, newRatingsWinLose.get(player2));
+	TestUtil.assertRating(test, 35.010, 7.910, newRatingsWinLose[player2]);
 
-	assertMatchQuality(0.110, calculator.calculateMatchQuality(gameInfo, teams));
+	TestUtil.assertMatchQuality(test, 0.110,
+		calculator.calculateMatchQuality(gameInfo, teams));
 
 	test.done();
 };
 
-	// TODO: Assert failures for larger teams
-*/
+// TODO: Assert failures for larger teams

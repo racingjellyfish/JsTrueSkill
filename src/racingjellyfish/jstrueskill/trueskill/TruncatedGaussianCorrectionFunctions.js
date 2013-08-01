@@ -77,8 +77,8 @@ exports.vWithinMargin = function(teamPerformanceDifference, drawMargin, c) {
             return -teamPerformanceDifference + drawMargin;
         }
 
-        var numerator = at(-drawMargin - teamPerformanceDifferenceAbsoluteValue) -
-                           at(drawMargin - teamPerformanceDifferenceAbsoluteValue);
+        var numerator = GaussianDistribution.at(-drawMargin - teamPerformanceDifferenceAbsoluteValue) -
+                           GaussianDistribution.at(drawMargin - teamPerformanceDifferenceAbsoluteValue);
 
         if (teamPerformanceDifference < 0.0) {
             return -numerator/denominator;
@@ -92,7 +92,7 @@ exports.vWithinMargin = function(teamPerformanceDifference, drawMargin, c) {
 
 
 // the multiplicative correction of a double-sided truncated Gaussian with unit variance
-exports.vWithinMargin = function(teamPerformanceDifference, drawMargin, c) {
+exports.wWithinMargin = function(teamPerformanceDifference, drawMargin, c) {
     if (arguments.length == 2) {
         // from F#:
         var teamPerformanceDifferenceAbsoluteValue = Math.abs(teamPerformanceDifference);
