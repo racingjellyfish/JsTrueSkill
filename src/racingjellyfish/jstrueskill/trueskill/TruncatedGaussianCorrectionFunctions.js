@@ -40,7 +40,9 @@ exports.vExceedsMargin = function(teamPerformanceDifference, drawMargin, c) {
  */
 exports.wExceedsMargin = function(teamPerformanceDifference, drawMargin, c) {
     if (arguments.length == 2) {
-        var denominator = cumulativeTo(teamPerformanceDifference - drawMargin);
+        var denominator =
+            GaussianDistribution.cumulativeTo(teamPerformanceDifference -
+                drawMargin);
 
         if (denominator < 2.222758749e-162) {
             if (teamPerformanceDifference < 0.0) {
@@ -54,7 +56,7 @@ exports.wExceedsMargin = function(teamPerformanceDifference, drawMargin, c) {
         return vWin*(vWin + teamPerformanceDifference - drawMargin);
     }
 
-    return this._WExceedsMargin(teamPerformanceDifference/c, drawMargin/c);
+    return this.wExceedsMargin(teamPerformanceDifference/c, drawMargin/c);
     //var vWin = VExceedsMargin(teamPerformanceDifference, drawMargin, c);
     //return vWin * (vWin + (teamPerformanceDifference - drawMargin) / c);
 };
