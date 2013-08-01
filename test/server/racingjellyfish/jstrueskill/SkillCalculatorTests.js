@@ -7,7 +7,7 @@ var Range = require('../../../../src/racingjellyfish/jstrueskill/numerics/Range'
 
 exports.testConstructor = function(test) {
 	var skillCalculator = new SkillCalculator([],
-		new Range(2, 2), new Range(2, 2));
+		Range.exactly(2), Range.exactly(2));
 
 	test.ok(skillCalculator !== undefined, "Expected valid object");
 
@@ -16,7 +16,7 @@ exports.testConstructor = function(test) {
 
 exports.testAbstractMethods = function(test) {
 	var skillCalculator = new SkillCalculator([],
-		new Range(2, 2), new Range(2, 2));
+		Range.exactly(2), Range.exactly(2));
 
 	test.throws(( function() {skillCalculator.calculateNewRatings();} ),
 		"Expected calculateNewRatings to throw");
@@ -28,7 +28,7 @@ exports.testAbstractMethods = function(test) {
 
 exports.testSupportedOptions = function(test) {
 	var skillCalculator = new SkillCalculator([SupportedOptions.PartialPlay],
-		new Range(2, 2), new Range(2, 2));
+		Range.exactly(2), Range.exactly(2));
 
 	test.ok(skillCalculator.isSupported(SupportedOptions.PartialPlay),
 		"Expected 'PartialPlay' to be supported");
@@ -39,29 +39,29 @@ exports.testSupportedOptions = function(test) {
 };
 
 exports.testValidateTeamsAndPlayers = function(test) {
-	var skillCalculator = new SkillCalculator([], new Range(2, 2), new Range(2, 2));
+	var skillCalculator = new SkillCalculator([], Range.exactly(2), Range.exactly(2));
 	var teams = [];
 	var player0 = new Player('Zero');
 	var player1 = new Player('One');
 	var player2 = new Player('Two');
 	var player3 = new Player('Three');
 	var rating = new Rating(0, 1);
-	var team0 = new Team(player0, rating);
+	var team0 = new Team('1', player0, rating);
 	team0.addPlayer(player1, rating);
 	teams.push(team0);
-	var team1 = new Team(player2, rating);
+	var team1 = new Team('2', player2, rating);
 	team1.addPlayer(player3, rating);
 	teams.push(team1);
 
 	test.ok(skillCalculator.validateTeamCountAndPlayersCountPerTeam(teams),
 		"Expected specified teams to be valid");
 
-	skillCalculator = new SkillCalculator([], new Range(1, 1), new Range(2, 2));
+	skillCalculator = new SkillCalculator([], Range.exactly(1), Range.exactly(2));
 	test.throws(( function() {
 		skillCalculator.validateTeamCountAndPlayersCountPerTeam(teams);} ),
 		"Expected specified teams to be invalid");
 
-	skillCalculator = new SkillCalculator([], new Range(2, 2), new Range(3, 3));
+	skillCalculator = new SkillCalculator([], Range.exactly(2), Range.exactly(3));
 	test.throws(( function() {
 		skillCalculator.validateTeamCountAndPlayersCountPerTeam(teams);} ),
 		"Expected specified teams to be invalid");
