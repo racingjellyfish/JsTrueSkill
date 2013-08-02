@@ -93,7 +93,7 @@ var GaussianWeightedSumFactor = function(sumVariable, variablesToSum, variableWe
 		currentWeights[currentDestinationWeightIndex] = finalWeight;
 		currentWeightsSquared[currentDestinationWeightIndex] = finalWeight * finalWeight;
 		variableIndices[variableIndices.length - 1] = 0;
-		this.variableIndexOrdersForWeights.add(variableIndices);
+		this.variableIndexOrdersForWeights.push(variableIndices);
 	}
 
 	this.createVariableToMessageBinding(sumVariable);

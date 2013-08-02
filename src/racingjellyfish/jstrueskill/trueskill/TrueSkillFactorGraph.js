@@ -46,17 +46,17 @@ TrueSkillFactorGraph.prototype.buildGraph = function() {
     for (var i = 0; i < this.layers.length; i++) {
         var currentLayer = this.layers[i];
         if (lastOutput !== null) {
-            currentLayer.setRawInputVariablesGroups(lastOutput);
+            currentLayer.setInputVariablesGroups(lastOutput);
         }
 
         currentLayer.buildLayer();
 
-        lastOutput = currentLayer.getRawOutputVariablesGroups();
+        lastOutput = currentLayer.getOutputVariablesGroups();
     }
 };
 
 TrueSkillFactorGraph.prototype.runSchedule = function() {
-    var fullSchedule = createFullSchedule();
+    var fullSchedule = this.createFullSchedule();
     fullSchedule.visit();
 };
 
@@ -84,21 +84,21 @@ TrueSkillFactorGraph.prototype.createFullSchedule = function() {
         currentLayer = this.layers[i];
         var currentPriorSchedule = currentLayer.createPriorSchedule();
         if (currentPriorSchedule !== null) {
-            fullSchedule.add(currentPriorSchedule);
+            fullSchedule.push(currentPriorSchedule);
         }
     }
 
     // Getting as a list to use reverse()
     var allLayers = new Array(this.layers.length);
     allLayers = MathUtils.arrayCopy(this.layers, 0, allLayers, 0, this.layers.length);
-    Array.reverse(allLayers);
+    allLayers.reverse();
 
-    for (i = 0; i < this.allLayers.length; i++) {
-        currentLayer = this.allLayers[i];
+    for (i = 0; i < allLayers.length; i++) {
+        currentLayer = allLayers[i];
 
         var currentPosteriorSchedule = currentLayer.createPosteriorSchedule();
         if (currentPosteriorSchedule !== null) {
-            fullSchedule.add(currentPosteriorSchedule);
+            fullSchedule.push(currentPosteriorSchedule);
         }
     }
 

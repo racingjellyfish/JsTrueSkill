@@ -15,7 +15,7 @@ TeamPerformancesToTeamPerformanceDifferencesLayer.prototype.buildLayer = functio
         var weakerTeam = this.getInputVariablesGroups()[i + 1][0];
 
         var currentDifference = this.createOutputVariable();
-        this.aAddLayerFactor(
+        this.addLayerFactor(
             this.createTeamPerformanceToDifferenceFactor(strongerTeam, weakerTeam,
                 currentDifference));
 

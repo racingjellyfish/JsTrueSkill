@@ -1,6 +1,7 @@
 var Rating = require('../../Rating');
 var KeyedVariable = require('../../factorgraphs/KeyedVariable');
 var Schedule = require('../../factorgraphs/Schedule');
+var ScheduleSequence = require('../../factorgraphs/ScheduleSequence');
 var ScheduleStep = require('../../factorgraphs/ScheduleStep');
 var GaussianDistribution = require('../../numerics/GaussianDistribution');
 var MathUtils = require('../../numerics/MathUtils');
@@ -15,12 +16,11 @@ var PlayerSkillsToPerformancesLayer = function(parentGraph, teams) {
 PlayerSkillsToPerformancesLayer.prototype = new TrueSkillFactorGraphLayer();
 
 PlayerSkillsToPerformancesLayer.prototype.buildLayer = function() {
-    var inputVariableGroups = this.getInputVariablesGroups();
-    for (var i = 0; i < inputVariableGroups.length; i++) {
+    var inputVariablesGroups = this.getInputVariablesGroups();
+    for (var i = 0; i < inputVariablesGroups.length; i++) {
         var currentTeam = inputVariablesGroups[i];
         var currentTeamPlayerPerformances = [];
 
-        // TODO currentTeam is a map?
         for (var j = 0; j < currentTeam.length; j++) {
             var playerSkillVariable = currentTeam[j];
             var playerPerformance = this.createOutputVariable(playerSkillVariable.getKey());
@@ -32,12 +32,12 @@ PlayerSkillsToPerformancesLayer.prototype.buildLayer = function() {
     }
 };
 
-PlayerSkillsToPerformancesLayer.prototype.CreateLikelihood = function(playerSkill,
+PlayerSkillsToPerformancesLayer.prototype.createLikelihood = function(playerSkill,
     playerPerformance) {
     return new GaussianLikelihoodFactor(MathUtils.square(ParentFactorGraph.getGameInfo().getBeta()), playerPerformance, playerSkill);
 };
 
-PlayerSkillsToPerformancesLayer.prototype.CreateOutputVariable = function(playerKey) {
+PlayerSkillsToPerformancesLayer.prototype.createOutputVariable = function(playerKey) {
     return new KeyedVariable(playerKey, GaussianDistribution.UNIFORM, "%s's performance",
         playerKey);
 };

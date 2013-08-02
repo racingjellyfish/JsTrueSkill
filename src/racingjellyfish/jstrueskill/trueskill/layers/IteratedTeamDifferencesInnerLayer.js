@@ -1,3 +1,4 @@
+var util = require('util');
 var Factor = require('../../factorgraphs/Factor');
 var Schedule = require('../../factorgraphs/Schedule');
 var ScheduleLoop = require('../../factorgraphs/ScheduleLoop');
@@ -32,12 +33,12 @@ IteratedTeamDifferencesInnerLayer.prototype.getUntypedFactors = function() {
 };
 
 IteratedTeamDifferencesInnerLayer.prototype.buildLayer = function() {
-    this.teamPerformancesToTeamPerformanceDifferencesLayer.setRawInputVariablesGroups(
+    this.teamPerformancesToTeamPerformanceDifferencesLayer.setInputVariablesGroups(
         this.getInputVariablesGroups());
     this.teamPerformancesToTeamPerformanceDifferencesLayer.buildLayer();
 
-    this.teamDifferencesComparisonLayer.setRawInputVariablesGroups(
-        this.teamPerformancesToTeamPerformanceDifferencesLayer.getRawOutputVariablesGroups());
+    this.teamDifferencesComparisonLayer.setInputVariablesGroups(
+        this.teamPerformancesToTeamPerformanceDifferencesLayer.getOutputVariablesGroups());
     this.teamDifferencesComparisonLayer.buildLayer();
 };
 
@@ -77,7 +78,7 @@ IteratedTeamDifferencesInnerLayer.prototype.createTwoTeamInnerPriorLoopSchedule 
     schedules.push(new ScheduleStep("send team perf to perf differences",
             this.teamPerformancesToTeamPerformanceDifferencesLayer.getLocalFactors()[0], 0));
     schedules.push(new ScheduleStep("send to greater than or within factor",
-            _TeamDifferencesComparisonLayer.getLocalFactors()[0], 0));
+            this.teamDifferencesComparisonLayer.getLocalFactors()[0], 0));
     return new ScheduleSequence(schedules, "loop of just two teams inner sequence");
 };
 

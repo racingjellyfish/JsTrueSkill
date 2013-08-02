@@ -1,6 +1,7 @@
 var PartialPlay = require('../../PartialPlay');
 var KeyedVariable = require('../../factorgraphs/KeyedVariable');
 var Schedule = require('../../factorgraphs/Schedule');
+var ScheduleSequence = require('../../factorgraphs/ScheduleSequence');
 var ScheduleStep = require('../../factorgraphs/ScheduleStep');
 var Variable = require('../../factorgraphs/Variable');
 var GaussianDistribution = require('../../numerics/GaussianDistribution');
@@ -15,11 +16,14 @@ var PlayerPerformancesToTeamPerformancesLayer = function(parentGraph) {
 PlayerPerformancesToTeamPerformancesLayer.prototype = new TrueSkillFactorGraphLayer();
 
 PlayerPerformancesToTeamPerformancesLayer.prototype.buildLayer = function() {
-	var teamPerformance = this.createOutputVariable(currentTeam);
-	this.addLayerFactor(this.createPlayerToTeamSumFactor(currentTeam, teamPerformance));
+	for (var i = 0; i < this.getInputVariablesGroups().length; i++) {
+		var currentTeam = this.getInputVariablesGroups()[i];
+		var teamPerformance = this.createOutputVariable(currentTeam);
+		this.addLayerFactor(this.createPlayerToTeamSumFactor(currentTeam, teamPerformance));
 
-	// REVIEW: Does it make sense to have groups of one?
-	this.addOutputVariable(teamPerformance);
+		// REVIEW: Does it make sense to have groups of one?
+		this.addOutputVariable(teamPerformance);
+	}
 };
 
 PlayerPerformancesToTeamPerformancesLayer.prototype.createPriorSchedule = function() {

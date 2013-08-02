@@ -64,4 +64,8 @@ FactorGraphLayer.prototype.getScheduleSequence = function(itemsToSequence,
 	return new ScheduleSequence(scheduleName, itemsToSequence);
 };
 
+FactorGraphLayer.prototype.addLayerFactor = function(factor) {
+	this.localFactors.push(factor);
+};
+
 module.exports = FactorGraphLayer;

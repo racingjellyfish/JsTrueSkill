@@ -2,6 +2,7 @@ var Rating = require('../../Rating');
 var DefaultVariable = require('../../factorgraphs/DefaultVariable');
 var KeyedVariable = require('../../factorgraphs/KeyedVariable');
 var Schedule = require('../../factorgraphs/Schedule');
+var ScheduleSequence = require('../../factorgraphs/ScheduleSequence');
 var ScheduleStep = require('../../factorgraphs/ScheduleStep');
 var Variable = require('../../factorgraphs/Variable');
 var GaussianDistribution = require('../../numerics/GaussianDistribution');
