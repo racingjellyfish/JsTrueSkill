@@ -27,3 +27,12 @@ exports.arrayCopy = function(src, srcPos, dest, destPos, length) {
 
     return dest;
 };
+
+// TODO roll out to other numerical equal checks...
+exports.notEqual = function(value0, value1) {
+	if (isNaN(value0) && isNaN(value1)) {
+		return false;
+	} else {
+		return value0 !== value1;
+	}
+};

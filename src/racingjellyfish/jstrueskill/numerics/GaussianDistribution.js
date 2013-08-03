@@ -92,27 +92,28 @@ GaussianDistribution.prototype.equals = function(other) {
 		return true;
 	}
 
-	if (typeof other !== 'object') {
+	if (!other.getMean ||
+		MathUtils.notEqual(this.getMean(), other.getMean())) {
 		return false;
 	}
 
-	if (this.getMean() !== other.getMean()) {
+	if (!other.getStandardDeviation ||
+		MathUtils.notEqual(this.getStandardDeviation(), other.getStandardDeviation())) {
 		return false;
 	}
 
-	if (this.getStandardDeviation() !== other.getStandardDeviation()) {
+	if (!other.getVariance ||
+		MathUtils.notEqual(this.getVariance(), other.getVariance())) {
 		return false;
 	}
 
-	if (this.getVariance() !== other.getVariance()) {
+	if (!other.getPrecision ||
+		MathUtils.notEqual(this.getPrecision(), other.getPrecision())) {
 		return false;
 	}
 
-	if (this.getPrecision() !== other.getPrecision()) {
-		return false;
-	}
-
-	if (this.getPrecisionMean() !== other.getPrecisionMean()) {
+	if (!other.getPrecisionMean ||
+		MathUtils.notEqual(this.getPrecisionMean(), other.getPrecisionMean())) {
 		return false;
 	}
 
