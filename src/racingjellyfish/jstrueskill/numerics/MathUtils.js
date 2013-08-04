@@ -21,11 +21,11 @@ exports.mean = function(collection) {
 };
 
 exports.arrayCopy = function(src, srcPos, dest, destPos, length) {
-    for (var index = 0; index < length; index++) {
-        dest[destPos + index] = src[srcPos + index];
-    }
+	for (var index = 0; index < length; index++) {
+		dest[destPos + index] = src[srcPos + index];
+	}
 
-    return dest;
+	return dest;
 };
 
 // TODO roll out to other numerical equal checks...

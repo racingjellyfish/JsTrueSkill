@@ -232,7 +232,7 @@ GaussianDistribution.inverseErrorFunctionCumulativeTo = function(p) {
 
 	var pp = (p < 1.0) ? p : 2 - p;
 	var t = Math.sqrt(-2 * Math.log(pp / 2.0)); // Initial guess
-	var  x = -0.70711 * ((2.30753 + t * 0.27061) / (1.0 + t * (0.99229 + t * 0.04481)) - t);
+	var x = -0.70711 * ((2.30753 + t * 0.27061) / (1.0 + t * (0.99229 + t * 0.04481)) - t);
 	for (var j = 0; j < 2; j++) {
 		var err = GaussianDistribution.errorFunctionCumulativeTo(x) - pp;
 		x += err / (1.1283791670955126 * Math.exp(-(x * x)) - x * err); // Halley
@@ -294,8 +294,7 @@ GaussianDistribution.divide = function(numerator, denominator) {
 };
 
 GaussianDistribution.logProductNormalization = function(left, right) {
-	if (left.getPrecision() === 0 || right.getPrecision() === 0)
-	{
+	if (left.getPrecision() === 0 || right.getPrecision() === 0) {
 		return 0;
 	}
 	var varianceSum = left.getVariance() + right.getVariance();
