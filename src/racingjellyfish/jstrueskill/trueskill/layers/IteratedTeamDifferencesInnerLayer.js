@@ -12,13 +12,13 @@ var TrueSkillFactorGraphLayer = require('./TrueSkillFactorGraphLayer');
 // The whole purpose of this is to do a loop on the bottom
 var IteratedTeamDifferencesInnerLayer = function(parentGraph,
     teamPerformancesToPerformanceDifferences, teamDifferencesComparisonLayer) {
-    TrueSkillFactorGraphLayer.call(this, parentGraph);
+    IteratedTeamDifferencesInnerLayer.super_.call(this, parentGraph);
 
     this.teamPerformancesToTeamPerformanceDifferencesLayer = teamPerformancesToPerformanceDifferences;
     this.teamDifferencesComparisonLayer = teamDifferencesComparisonLayer;
 };
 
-IteratedTeamDifferencesInnerLayer.prototype = new TrueSkillFactorGraphLayer();
+util.inherits(IteratedTeamDifferencesInnerLayer, TrueSkillFactorGraphLayer);
 
 IteratedTeamDifferencesInnerLayer.prototype.getUntypedFactors = function() {
     var factors = [];

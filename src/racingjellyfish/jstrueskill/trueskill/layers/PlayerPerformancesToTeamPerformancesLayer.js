@@ -1,3 +1,4 @@
+var util = require('util');
 var PartialPlay = require('../../PartialPlay');
 var KeyedVariable = require('../../factorgraphs/KeyedVariable');
 var Schedule = require('../../factorgraphs/Schedule');
@@ -10,10 +11,10 @@ var TrueSkillFactorGraphLayer = require('./TrueSkillFactorGraphLayer');
 
 // The whole purpose of this is to do a loop on the bottom
 var PlayerPerformancesToTeamPerformancesLayer = function(parentGraph) {
-	TrueSkillFactorGraphLayer.call(this, parentGraph);
+    PlayerPerformancesToTeamPerformancesLayer.super_.call(this, parentGraph);
 };
 
-PlayerPerformancesToTeamPerformancesLayer.prototype = new TrueSkillFactorGraphLayer();
+util.inherits(PlayerPerformancesToTeamPerformancesLayer, TrueSkillFactorGraphLayer);
 
 PlayerPerformancesToTeamPerformancesLayer.prototype.buildLayer = function() {
 	for (var i = 0; i < this.getInputVariablesGroups().length; i++) {

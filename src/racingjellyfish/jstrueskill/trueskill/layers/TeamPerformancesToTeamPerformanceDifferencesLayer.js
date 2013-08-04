@@ -1,13 +1,14 @@
+var util = require('util');
 var Variable = require('../../factorgraphs/Variable');
 var GaussianDistribution = require('../../numerics/GaussianDistribution');
 var GaussianWeightedSumFactor = require('../factors/GaussianWeightedSumFactor');
 var TrueSkillFactorGraphLayer = require('./TrueSkillFactorGraphLayer');
 
 var TeamPerformancesToTeamPerformanceDifferencesLayer = function(parentGraph, teams) {
-    TrueSkillFactorGraphLayer.call(this, parentGraph);
+    TeamPerformancesToTeamPerformanceDifferencesLayer.super_.call(this, parentGraph);
 };
 
-TeamPerformancesToTeamPerformanceDifferencesLayer.prototype = new TrueSkillFactorGraphLayer();
+util.inherits(TeamPerformancesToTeamPerformanceDifferencesLayer, TrueSkillFactorGraphLayer);
 
 TeamPerformancesToTeamPerformanceDifferencesLayer.prototype.buildLayer = function() {
     for (var i = 0; i < this.getInputVariablesGroups().length - 1; i++) {

@@ -1,5 +1,5 @@
-var MathUtils = require('../../numerics/MathUtils');
 var util = require('util');
+var MathUtils = require('../../numerics/MathUtils');
 var Guard = require('../../Guard');
 var GaussianDistribution = require('../../numerics/GaussianDistribution');
 var GaussianFactor = require('./GaussianFactor');
@@ -11,7 +11,8 @@ var Variable = require('../../factorgraphs/Variable');
  * <remarks>See the accompanying math paper for more details.</remarks>
  */
 var GaussianWeightedSumFactor = function(sumVariable, variablesToSum, variableWeights) {
-	GaussianFactor.call(this, this.createName(sumVariable, variablesToSum, variableWeights));
+	GaussianWeightedSumFactor.super_.call(this,
+		this.createName(sumVariable, variablesToSum, variableWeights));
 
 	this.variableIndexOrdersForWeights = [];
 
@@ -104,7 +105,7 @@ var GaussianWeightedSumFactor = function(sumVariable, variablesToSum, variableWe
 	}
 };
 
-GaussianWeightedSumFactor.prototype = new GaussianFactor();
+util.inherits(GaussianWeightedSumFactor, GaussianFactor);
 
 GaussianWeightedSumFactor.prototype.createName = function(sumVariable, variablesToSum,
 	weights) {

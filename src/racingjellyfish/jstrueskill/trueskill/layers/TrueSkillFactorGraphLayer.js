@@ -1,9 +1,10 @@
+var util = require('util');
 var FactorGraphLayer = require('../../factorgraphs/FactorGraphLayer');
 
 var TrueSkillFactorGraphLayer = function(parentGraph) {
-	FactorGraphLayer.call(this, parentGraph);
+    TrueSkillFactorGraphLayer.super_.call(this, parentGraph);
 };
 
-TrueSkillFactorGraphLayer.prototype = new FactorGraphLayer();
+util.inherits(TrueSkillFactorGraphLayer, FactorGraphLayer);
 
 module.exports = TrueSkillFactorGraphLayer;

@@ -1,5 +1,5 @@
-var MathUtils = require('../../numerics/MathUtils');
 var util = require('util');
+var MathUtils = require('../../numerics/MathUtils');
 var GaussianDistribution = require('../../numerics/GaussianDistribution');
 var GaussianFactor = require('./GaussianFactor');
 var Message = require('../../factorgraphs/Message');
@@ -11,13 +11,14 @@ var TGCF = require('../TruncatedGaussianCorrectionFunctions');
  * <remarks>See the accompanying math paper for more details.</remarks>
  */
 var GaussianWithinFactor = function(epsilon, variable) {
-	GaussianFactor.call(this, util.format('%s <= %4.3f', variable, epsilon));
+	GaussianWithinFactor.super_.call(this,
+		util.format('%s <= %4.3f', variable, epsilon));
 
 	this.epsilon = epsilon;
 	this.createVariableToMessageBinding(variable);
 };
 
-GaussianWithinFactor.prototype = new GaussianFactor();
+util.inherits(GaussianWithinFactor, GaussianFactor);
 
 GaussianWithinFactor.prototype.getLogNormalization = function() {
 	var marginal = variables[0].getValue();

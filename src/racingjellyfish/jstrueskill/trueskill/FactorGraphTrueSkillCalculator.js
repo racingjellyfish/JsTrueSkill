@@ -1,6 +1,7 @@
 /**
  * Calculates TrueSkill using a full factor graph.
  */
+var util = require('util');
 var GameInfo = require('../GameInfo');
 var Guard = require('../Guard');
 var PairwiseComparison = require('../PairwiseComparison');
@@ -18,12 +19,12 @@ var TGCF = require('./TruncatedGaussianCorrectionFunctions');
 //import org.ejml.simple.SimpleMatrix;
 
 var FactorGraphTrueSkillCalculator = function() {
-	SkillCalculator.call(this,
+    FactorGraphTrueSkillCalculator.super_.call(this,
 		[SupportedOptions.PartialPlay, SupportedOptions.PartialUpdate],
 		Range.atLeast(2), Range.atLeast(1));
 };
 
-FactorGraphTrueSkillCalculator.prototype = new SkillCalculator();
+util.inherits(FactorGraphTrueSkillCalculator, SkillCalculator);
 
 FactorGraphTrueSkillCalculator.prototype.calculateNewRatings = function(gameInfo,
 	teams, teamRanks) {

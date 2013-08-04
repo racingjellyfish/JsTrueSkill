@@ -4,7 +4,7 @@ var FactorGraphLayerBase = require('./FactorGraphLayerBase');
 var ScheduleSequence = require('./ScheduleSequence');
 
 var FactorGraphLayer = function(parentGraph) {
-	FactorGraphLayerBase.call(this);
+	FactorGraphLayer.super_.call(this);
 
 	this.parentGraph = parentGraph;
 
@@ -13,7 +13,7 @@ var FactorGraphLayer = function(parentGraph) {
 	this.outputVariablesGroups = [];
 };
 
-FactorGraphLayer.prototype = new FactorGraphLayerBase();
+util.inherits(FactorGraphLayer, FactorGraphLayerBase);
 
 FactorGraphLayer.prototype.getParentFactorGraph = function() {
 	return this.parentGraph;

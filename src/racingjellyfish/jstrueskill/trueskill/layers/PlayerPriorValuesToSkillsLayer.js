@@ -1,3 +1,4 @@
+var util = require('util');
 var Rating = require('../../Rating');
 var DefaultVariable = require('../../factorgraphs/DefaultVariable');
 var KeyedVariable = require('../../factorgraphs/KeyedVariable');
@@ -12,12 +13,12 @@ var TrueSkillFactorGraphLayer = require('./TrueSkillFactorGraphLayer');
 
 // We intentionally have no Posterior schedule since the only purpose here is to...
 var PlayerPriorValuesToSkillsLayer = function(parentGraph, teams) {
-	TrueSkillFactorGraphLayer.call(this, parentGraph);
+    PlayerPriorValuesToSkillsLayer.super_.call(this, parentGraph);
 
 	this.teams = teams;
 };
 
-PlayerPriorValuesToSkillsLayer.prototype = new TrueSkillFactorGraphLayer();
+util.inherits(PlayerPriorValuesToSkillsLayer, TrueSkillFactorGraphLayer);
 
 PlayerPriorValuesToSkillsLayer.prototype.buildLayer = function() {
 	for (var i = 0; i < this.teams.length; i++) {

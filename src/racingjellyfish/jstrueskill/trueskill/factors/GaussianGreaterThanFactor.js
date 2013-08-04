@@ -12,12 +12,14 @@ var TGCF = require('../TruncatedGaussianCorrectionFunctions');
  * TODO add link...
  */
 var GaussianGreaterThanFactor = function(epsilon, variable) {
-	GaussianFactor.call(this, util.format('%s > %s', variable, epsilon));
+	GaussianGreaterThanFactor.super_.call(this,
+		util.format('%s > %s', variable, epsilon));
+
 	this.epsilon = epsilon;
 	this.createVariableToMessageBinding(variable);
 };
 
-GaussianGreaterThanFactor.prototype = new GaussianFactor();
+util.inherits(GaussianGreaterThanFactor, GaussianFactor);
 
 GaussianGreaterThanFactor.prototype.getLogNormalization = function() {
 	var marginal = this.getVariables()[0].getValue();

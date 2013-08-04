@@ -5,6 +5,7 @@
  * is to show the bare minimum of what a TrueSkill implementation should have.
  * </remarks>
  */
+var util = require('util');
 var GameInfo = require('../GameInfo');
 var Guard = require('../Guard');
 var PairwiseComparison = require('../PairwiseComparison');
@@ -17,10 +18,11 @@ var DrawMargin = require('./DrawMargin');
 var TGCF = require('./TruncatedGaussianCorrectionFunctions');
 
 var TwoPlayerTrueSkillCalculator = function() {
-	SkillCalculator.call(this, [], Range.exactly(2), Range.exactly(1));
+	TwoPlayerTrueSkillCalculator.super_.call(this, [],
+		Range.exactly(2), Range.exactly(1));
 };
 
-TwoPlayerTrueSkillCalculator.prototype = new SkillCalculator();
+util.inherits(TwoPlayerTrueSkillCalculator, SkillCalculator);
 
 TwoPlayerTrueSkillCalculator.prototype.calculateNewRatings = function(gameInfo,
 	teams, teamRanks) {

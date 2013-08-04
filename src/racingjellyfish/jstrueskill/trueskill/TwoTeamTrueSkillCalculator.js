@@ -4,6 +4,7 @@
  * When you only have two teams, the math is still simple: no factor graphs are used yet.
  * </remarks>
  */
+var util = require('util');
 var GameInfo = require('../GameInfo');
 var Guard = require('../Guard');
 var PairwiseComparison = require('../PairwiseComparison');
@@ -16,10 +17,11 @@ var DrawMargin = require('./DrawMargin');
 var TGCF = require('./TruncatedGaussianCorrectionFunctions');
 
 var TwoTeamTrueSkillCalculator = function() {
-    SkillCalculator.call(this, [], Range.exactly(2), Range.atLeast(1));
+    TwoTeamTrueSkillCalculator.super_.call(this, [],
+        Range.exactly(2), Range.atLeast(1));
 };
 
-TwoTeamTrueSkillCalculator.prototype = new SkillCalculator();
+util.inherits(TwoTeamTrueSkillCalculator, SkillCalculator);
 
 TwoTeamTrueSkillCalculator.prototype.calculateNewRatings = function(gameInfo,
     teams, teamRanks) {

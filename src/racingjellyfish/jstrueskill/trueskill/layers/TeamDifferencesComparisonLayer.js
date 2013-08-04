@@ -1,3 +1,4 @@
+var util = require('util');
 var DefaultVariable = require('../../factorgraphs/DefaultVariable');
 var Variable = require('../../factorgraphs/Variable');
 var GaussianDistribution = require('../../numerics/GaussianDistribution');
@@ -8,14 +9,14 @@ var GaussianWithinFactor = require('../factors/GaussianWithinFactor');
 var TrueSkillFactorGraphLayer = require('./TrueSkillFactorGraphLayer');
 
 var TeamDifferencesComparisonLayer = function(parentGraph, teamRanks) {
-    TrueSkillFactorGraphLayer.call(this, parentGraph);
+    TeamDifferencesComparisonLayer.super_.call(this, parentGraph);
 
     this.teamRanks = teamRanks;
     var gameInfo = parentGraph.getGameInfo();
     this.epsilon = DrawMargin.getDrawMarginFromDrawProbability(gameInfo.getDrawProbability(), gameInfo.getBeta());
 };
 
-TeamDifferencesComparisonLayer.prototype = new TrueSkillFactorGraphLayer();
+util.inherits(TeamDifferencesComparisonLayer, TrueSkillFactorGraphLayer);
 
 TeamDifferencesComparisonLayer.prototype.buildLayer = function() {
     for (var i = 0; i < this.getInputVariablesGroups().length; i++) {

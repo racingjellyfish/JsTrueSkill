@@ -1,13 +1,14 @@
+var util = require('util');
 var GaussianDistribution = require('../../numerics/GaussianDistribution');
 var Factor = require('../../factorgraphs/Factor');
 var Message = require('../../factorgraphs/Message');
 var Variable = require('../../factorgraphs/Variable');
 
 var GaussianFactor = function(factorName) {
-	Factor.call(this, factorName);
+	GaussianFactor.super_.call(this,  factorName);
 };
 
-GaussianFactor.prototype = new Factor();
+util.inherits(GaussianFactor, Factor);
 
 /**
  * Sends the factor-graph message and returns the log-normalization constant.

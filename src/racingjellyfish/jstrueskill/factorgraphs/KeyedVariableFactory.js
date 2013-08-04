@@ -1,3 +1,4 @@
+var util = require('util');
 var KeyedVariable = require('./KeyedVariable');
 var VariableFactory = require('./VariableFactory');
 
@@ -7,10 +8,10 @@ var VariableFactory = require('./VariableFactory');
  * Constructor for a prior initializer.
  */
 var KeyedVariableFactory = function(variablePriorInitializer) {
-	VariableFactory.call(this, variablePriorInitializer);
+	KeyedVariableFactory.super_.call(this, variablePriorInitializer);
 };
 
-KeyedVariableFactory.prototype = new VariableFactory();
+util.inherits(KeyedVariableFactory, VariableFactory);
 
 VariableFactory.prototype.createKeyedVariable = function(key, nameTemplate, templateArgs) {
 	return new KeyedVariable(key, this.variablePriorInitializer.call(), nameTemplate, templateArgs);

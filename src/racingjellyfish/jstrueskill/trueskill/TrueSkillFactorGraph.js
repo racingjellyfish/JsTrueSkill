@@ -1,3 +1,4 @@
+var util = require('util');
 var Rating = require('../Rating');
 var Factor = require('../factorgraphs/Factor');
 var FactorGraph = require('../factorgraphs/FactorGraph');
@@ -15,7 +16,7 @@ var TeamDifferencesComparisonLayer = require('./layers/TeamDifferencesComparison
 var TeamPerformancesToTeamPerformanceDifferencesLayer = require('./layers/TeamPerformancesToTeamPerformanceDifferencesLayer');
 
 var TrueSkillFactorGraph = function(gameInfo, teams, teamRanks) {
-    FactorGraph.call(this);
+    TrueSkillFactorGraph.super_.call(this);
 
     this.priorLayer = new PlayerPriorValuesToSkillsLayer(this, teams);
     this.setGameInfo(gameInfo);
@@ -30,7 +31,7 @@ var TrueSkillFactorGraph = function(gameInfo, teams, teamRanks) {
                           new TeamDifferencesComparisonLayer(this, teamRanks)));
 };
 
-TrueSkillFactorGraph.prototype = new FactorGraph();
+util.inherits(TrueSkillFactorGraph, FactorGraph);
 
 TrueSkillFactorGraph.prototype.setGameInfo = function(gameInfo) {
     this.gameInfo = gameInfo;

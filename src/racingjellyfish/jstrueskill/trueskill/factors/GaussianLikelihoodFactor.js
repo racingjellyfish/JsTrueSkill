@@ -10,14 +10,15 @@ var Variable = require('../../factorgraphs/Variable');
  * <remarks>See the accompanying math paper for more details.</remarks>
  */
 var GaussianLikelihoodFactor = function(betaSquared, variable1, variable2) {
-    GaussianFactor.call(this, util.format('Likelihood of %s going to %s', variable2, variable1));
+    GaussianLikelihoodFactor.super_.call(this,
+        util.format('Likelihood of %s going to %s', variable2, variable1));
 
     this.precision = 1.0 / betaSquared;
     this.createVariableToMessageBinding(variable1);
     this.createVariableToMessageBinding(variable2);
 };
 
-GaussianLikelihoodFactor.prototype = new GaussianFactor();
+util.inherits(GaussianLikelihoodFactor, GaussianFactor);
 
 GaussianLikelihoodFactor.prototype.getLogNormalization = function() {
     return GaussianDistribution.logRatioNormalization(this.getVariables()[0].getValue(),
