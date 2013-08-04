@@ -43,7 +43,7 @@ Variable.prototype.setValue = function(varValue) {
  * Output the name of this variable.
  */
 Variable.prototype.toString = function() {
-	return this.varName;
+	return this.varName + '-->' + this.varValue;
 };
 
 module.exports = Variable;

@@ -178,8 +178,8 @@ GaussianWeightedSumFactor.prototype.updateHelper = function(weights, weightsSqua
 	variables) {
 	// Potentially look at http://mathworld.wolfram.com/NormalSumDistribution.html for clues as
 	// to what it's doing
-	var message0 = new GaussianDistribution(messages[0].getValue());
-	var marginal0 = new GaussianDistribution(variables[0].getValue());
+	var message0 = GaussianDistribution.fromGaussian(messages[0].getValue());
+	var marginal0 = GaussianDistribution.fromGaussian(variables[0].getValue());
 
 	// The math works out so that 1/newPrecision = sum of a_i^2 /marginalsWithoutMessages[i]
 	var inverseOfNewPrecisionSum = 0.0;

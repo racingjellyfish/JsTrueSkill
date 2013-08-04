@@ -34,8 +34,8 @@ GaussianWithinFactor.prototype.getLogNormalization = function() {
 };
 
 GaussianWithinFactor.prototype._updateMessage = function(message, variable) {
-	var oldMarginal = new GaussianDistribution(variable.getValue());
-	var oldMessage = new GaussianDistribution(message.getValue());
+	var oldMarginal = GaussianDistribution.fromGaussian(variable.getValue());
+	var oldMessage = GaussianDistribution.fromGaussian(message.getValue());
 	var messageFromVariable = GaussianDistribution.divide(oldMarginal,oldMessage);
 
 	var c = messageFromVariable.getPrecision();

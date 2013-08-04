@@ -11,18 +11,18 @@ var Variable = require('../../factorgraphs/Variable');
  */
 var GaussianPriorFactor = function(mean, variance, variable) {
 	GaussianPriorFactor.super_.call(this,
-		util.format('Prior value going to %s', variable));
+		util.format('Prior value going to %s', [variable]));
 
 	this.newMessage = new GaussianDistribution(mean, Math.sqrt(variance));
 	this.createVariableToMessageBinding(variable,
 		new Message(GaussianDistribution.fromPrecisionMean(0, 0), "message from %s to %s",
-		this, variable));
+		[this, variable]));
 };
 
 util.inherits(GaussianPriorFactor, GaussianFactor);
 
 GaussianPriorFactor.prototype._updateMessage = function(message, variable) {
-	var oldMarginal = new GaussianDistribution(variable.getValue());
+	var oldMarginal = GaussianDistribution.fromGaussian(variable.getValue());
 	var oldMessage = message;
 	var newMarginal = GaussianDistribution.fromPrecisionMean(
 			oldMarginal.getPrecisionMean() + this.newMessage.getPrecisionMean() -

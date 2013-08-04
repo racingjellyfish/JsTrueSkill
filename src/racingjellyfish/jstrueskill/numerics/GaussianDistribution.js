@@ -24,23 +24,31 @@ var square = MathUtils.square;
 /**
  * Constructor that calculates precision and precision mean from the supplied values.
  */
-var GaussianDistribution = function(mean, standardDeviation) {
+var GaussianDistribution = function(mean, standardDeviation, variance, precision,
+	precisionMean) {
 	/** The peak of the gaussian, μ */
 	this.mean = mean;
 
 	/** The width of the gaussian, σ, where the height drops to max/e */
 	this.standardDeviation = standardDeviation;
 
-	/** The square of the standard deviation, σ^2 */
-	this.variance = square(standardDeviation);
+	// set the remaining instance values depending on the number of arguments
+	if (arguments.length == 2) {
+		/** The square of the standard deviation, σ^2 */
+		this.variance = square(standardDeviation);
 
-	// Precision and PrecisionMean are used because they make multiplying and
-	// dividing simpler (see the accompanying math paper for more details)
-	/** 1/σ^2 */
-	this.precision = 1.0 / square(standardDeviation);
+		// Precision and PrecisionMean are used because they make multiplying and
+		// dividing simpler (see the accompanying math paper for more details)
+		/** 1/σ^2 */
+		this.precision = 1.0 / square(standardDeviation);
 
-	/** Precision times mean, μ/σ^2 */
-	this.precisionMean = mean / square(standardDeviation);
+		/** Precision times mean, μ/σ^2 */
+		this.precisionMean = mean / square(standardDeviation);
+	} else {
+		this.variance = variance;
+		this.precision = precision;
+		this.precisionMean = precisionMean;
+	}
 };
 
 GaussianDistribution.prototype.getMean = function() {
@@ -124,7 +132,9 @@ GaussianDistribution.prototype.equals = function(other) {
  * Construct from another gaussian.
  */
 GaussianDistribution.fromGaussian = function(gaussian) {
-	return new GaussianDistribution(gaussian.getMean(), gaussian.getStandardDeviation());
+	return new GaussianDistribution(gaussian.getMean(),
+		gaussian.getStandardDeviation(), gaussian.getVariance(),
+		gaussian.getPrecision(), gaussian.getPrecisionMean());
 };
 
 /**

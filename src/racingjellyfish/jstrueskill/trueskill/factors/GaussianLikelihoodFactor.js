@@ -27,11 +27,11 @@ GaussianLikelihoodFactor.prototype.getLogNormalization = function() {
 
 GaussianLikelihoodFactor.prototype.updateHelper = function(message1, message2, variable1,
     variable2) {
-    var message1Value = new GaussianDistribution(message1.getValue());
-    var message2Value = new GaussianDistribution(message2.getValue());
+    var message1Value = GaussianDistribution.fromGaussian(message1.getValue());
+    var message2Value = GaussianDistribution.fromGaussian(message2.getValue());
 
-    var marginal1 = new GaussianDistribution(variable1.getValue());
-    var marginal2 = new GaussianDistribution(variable2.getValue());
+    var marginal1 = GaussianDistribution.fromGaussian(variable1.getValue());
+    var marginal2 = GaussianDistribution.fromGaussian(variable2.getValue());
 
     var a = this.precision / (this.precision + marginal2.getPrecision() - message2Value.getPrecision());
 
