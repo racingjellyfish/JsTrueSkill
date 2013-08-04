@@ -5,6 +5,10 @@ var util = require('util');
  * generate the variable name from the template.
  */
 var Variable = function(prior, nameTemplate, templateArgs) {
+	if (!prior) {
+		throw new Error('Invalid prior value: ' + prior);
+	}
+
 	/** The prior of this variable */
 	this.prior = prior;
 

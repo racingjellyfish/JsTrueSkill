@@ -1,16 +1,17 @@
+var util = require('util');
 var Schedule = require('./Schedule');
 
 var ScheduleStep = function(scheduleName, factor, scheduleIndex) {
-	Schedule.call(this, scheduleName);
+	ScheduleStep.super_.call(this, scheduleName);
 
 	this.factor = factor;
 	this.scheduleIndex = scheduleIndex;
 };
 
+util.inherits(ScheduleStep, Schedule);
+
 ScheduleStep.prototype.visit = function(depth, maxDepth) {
 	return this.factor.updateMessage(this.scheduleIndex);
 };
-
-ScheduleStep.prototype = new Schedule();
 
 module.exports = ScheduleStep;

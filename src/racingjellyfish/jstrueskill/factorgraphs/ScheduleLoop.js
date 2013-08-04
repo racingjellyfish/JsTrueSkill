@@ -4,13 +4,13 @@ var Schedule = require('./Schedule');
 var MAX_ITERATIONS = 100;
 
 var ScheduleLoop = function(scheduleName, scheduleToLoop, maxDelta) {
-	Schedule.call(this, scheduleName);
+	ScheduleLoop.super_.call(this, scheduleName);
 
 	this.scheduleToLoop = scheduleToLoop;
 	this.maxDelta = maxDelta;
 };
 
-ScheduleLoop.prototype = new Schedule();
+util.inherits(ScheduleLoop, Schedule);
 
 ScheduleLoop.prototype.visit = function(depth, maxDepth) {
 	var delta = this.scheduleToLoop.visit(depth + 1, maxDepth);

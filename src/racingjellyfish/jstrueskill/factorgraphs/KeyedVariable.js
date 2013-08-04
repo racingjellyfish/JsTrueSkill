@@ -1,15 +1,16 @@
+var util = require('util');
 var Variable = require('./Variable');
 
 /**
  * Constructor with a key, prior and name template.
  */
 var KeyedVariable = function(key, prior, nameTemplate, templateArgs) {
-	Variable.call(this, prior, nameTemplate, templateArgs);
+	KeyedVariable.super_.call(this, prior, nameTemplate, templateArgs);
 
 	this.key = key;
 };
 
-KeyedVariable.prototype = new Variable();
+util.inherits(KeyedVariable, Variable);
 
 /**
  * Return the key for this variable.

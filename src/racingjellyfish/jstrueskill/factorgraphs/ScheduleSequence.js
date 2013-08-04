@@ -1,12 +1,13 @@
+var util = require('util');
 var Schedule = require('./Schedule');
 
 var ScheduleSequence = function(scheduleName, schedules) {
-    Schedule.call(this, scheduleName);
+	ScheduleSequence.super_.call(this, scheduleName);
 
     this.schedules = schedules;
 };
 
-ScheduleSequence.prototype = new Schedule();
+util.inherits(ScheduleSequence, Schedule);
 
 ScheduleSequence.prototype.visit = function(depth, maxDepth) {
     var maxDelta = 0;

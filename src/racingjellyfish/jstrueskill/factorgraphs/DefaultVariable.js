@@ -1,13 +1,14 @@
+var util = require('util');
 var Variable = require('./Variable');
 
 /**
  * Constructor with no prior.
  */
 var DefaultVariable = function() {
-	Variable.call(this, null, "Default");
+	DefaultVariable.super_.call(this,  null, "Default");
 };
 
-DefaultVariable.prototype = new Variable();
+util.inherits(DefaultVariable, Variable);
 
 /**
  * Override to prevent the value from being set.

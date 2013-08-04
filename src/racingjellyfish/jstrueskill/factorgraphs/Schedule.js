@@ -1,4 +1,8 @@
 var Schedule = function(scheduleName) {
+	if (!scheduleName || typeof scheduleName != 'string' ||
+		scheduleName.trim().length === 0) {
+		throw new Error('Invalid schedule name: ' + scheduleName);
+	}
 	this.scheduleName = scheduleName;
 };
 
