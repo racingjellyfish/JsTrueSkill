@@ -93,11 +93,11 @@ TwoPlayerTrueSkillCalculator.prototype.calculateNewRating = function(gameInfo,
 		// non-draw case
 		v = TGCF.vExceedsMargin(meanDelta, drawMargin, c);
 		w = TGCF.wExceedsMargin(meanDelta, drawMargin, c);
-        rankMultiplier = comparison.multiplier;
+		rankMultiplier = comparison.multiplier;
 	} else {
 		v = TGCF.vWithinMargin(meanDelta, drawMargin, c);
 		w = TGCF.wWithinMargin(meanDelta, drawMargin, c);
-        rankMultiplier = 1;
+		rankMultiplier = 1;
 	}
 
 	var meanMultiplier = (selfRating.getVariance() +
