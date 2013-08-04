@@ -7,7 +7,7 @@ exports.testBasicValues = function(test) {
 	test.equal(variable.getKey(), expected, "Expected key to be: " + expected);
 	expected = -1;
 	test.equal(variable.getValue(), expected, "Expected value to be: " + expected);
-	expected = 'Variable[Test]';
+	expected = 'Variable[Test]-->-1';
 	test.equal(variable.toString(), expected, "Expected name to be: " + expected);
 
 	test.done();
@@ -20,7 +20,7 @@ exports.testFormattedName = function(test) {
 	test.equal(variable.getKey(), expected, "Expected key to be: " + expected);
 	expected = -1;
 	test.equal(variable.getValue(), expected, "Expected value to be: " + expected);
-	expected = 'Variable[Test]';
+	expected = 'Variable[Test]-->-1';
 	test.equal(variable.toString(), expected, "Expected name to be: " + expected);
 
 	test.done();

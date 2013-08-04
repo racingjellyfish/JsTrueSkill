@@ -11,7 +11,7 @@ exports.testCreateBasicVariable = function(test) {
 
 	var expected = 5;
 	test.equal(variable.getValue(), expected, "Expected value to be: " + expected);
-	expected = 'Variable[Test]';
+	expected = 'Variable[Test]-->5';
 	test.equal(variable.toString(), expected, "Expected name to be: " + expected);
 
 	test.done();
@@ -27,7 +27,7 @@ exports.testCreateWithNameTemplate = function(test) {
 
 	var expected = 5;
 	test.equal(variable.getValue(), expected, "Expected value to be: " + expected);
-	expected = 'Variable[Test]';
+	expected = 'Variable[Test]-->5';
 	test.equal(variable.toString(), expected, "Expected name to be: " + expected);
 
 	test.done();

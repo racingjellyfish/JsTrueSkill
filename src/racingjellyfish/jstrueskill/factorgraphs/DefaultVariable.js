@@ -11,6 +11,13 @@ var DefaultVariable = function() {
 util.inherits(DefaultVariable, Variable);
 
 /**
+ * Overridden as there's no value to display.
+ */
+DefaultVariable.prototype.toString = function() {
+	return this.varName;
+};
+
+/**
  * Override to prevent the value from being set.
  */
 DefaultVariable.prototype.setValue = function() {
