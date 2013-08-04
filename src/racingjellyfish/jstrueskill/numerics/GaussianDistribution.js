@@ -145,9 +145,7 @@ GaussianDistribution.fromPrecisionMean = function(precisionMean, precision) {
 /**
  * The gaussian representation of a flat line.
  */
-GaussianDistribution.uniform = function() {
-	return new GaussianDistribution.fromPrecisionMean(0, 0);
-};
+GaussianDistribution.UNIFORM = new GaussianDistribution.fromPrecisionMean(0, 0);
 
 /**
  * Return the cumulative area to the specified value under the specified gaussian.

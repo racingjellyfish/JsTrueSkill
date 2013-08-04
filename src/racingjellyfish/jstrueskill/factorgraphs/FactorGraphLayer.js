@@ -1,6 +1,7 @@
 var util = require('util');
 var Factor = require('./Factor');
 var FactorGraphLayerBase = require('./FactorGraphLayerBase');
+var ScheduleSequence = require('./ScheduleSequence');
 
 var FactorGraphLayer = function(parentGraph) {
 	FactorGraphLayerBase.call(this);
@@ -51,7 +52,7 @@ FactorGraphLayer.prototype.addOutputVariable = function(variable) {
 	this.addOutputVariableGroup(group);
 };
 
-FactorGraphLayer.prototype.getScheduleSequence = function(itemsToSequence,
+FactorGraphLayer.prototype.createScheduleSequence = function(itemsToSequence,
 	nameTemplate, templateArgs) {
 	/** The name of the schedule */
 	var scheduleName = "Schedule[Default]";

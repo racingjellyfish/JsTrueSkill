@@ -12,7 +12,7 @@ GaussianFactor.prototype = new Factor();
 /**
  * Sends the factor-graph message and returns the log-normalization constant.
  **/
-GaussianFactor.prototype.sendMessage = function(message, variable) {
+GaussianFactor.prototype._sendMessage = function(message, variable) {
 	var marginal = variable.getValue();
 	var messageValue = message.getValue();
 	var logZ = GaussianDistribution.logProductNormalization(marginal, messageValue);

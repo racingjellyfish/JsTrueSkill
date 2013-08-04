@@ -65,8 +65,8 @@ TrueSkillFactorGraph.prototype.getProbabilityOfRanking = function() {
 
     for (var i = 0; i < this.layers.length; i++) {
         var currentLayer = this.layers[i];
-        for (var j = 0; j < currentLayer.getUntypedFactors().length; j++) {
-            var currentFactor = currentLayer.getUntypedFactors()[j];
+        for (var j = 0; j < currentLayer.getLocalFactors().length; j++) {
+            var currentFactor = currentLayer.getLocalFactors()[j];
             factorList.addFactor(currentFactor);
         }
     }
@@ -108,15 +108,15 @@ TrueSkillFactorGraph.prototype.createFullSchedule = function() {
 TrueSkillFactorGraph.prototype.getUpdatedRatings = function() {
     var result = {};
 
-    // TODO teams is a map?
+    // TODO teams is a list of lists?
     var teams = this.priorLayer.getOutputVariablesGroups();
     for (var i = 0; i < teams.length; i++) {
-        var currentTeam = teams[i];
-        var players = team.getPlayers();
-        for (var j = 0; j < players.length; j++) {
-            var currentPlayer = players[j];
-            result.put(currentPlayer.getKey(), new Rating(currentPlayer.getValue().getMean(),
-                                                   currentPlayer.getValue().getStandardDeviation()));
+        var playerList = teams[i];
+        for (var j = 0; j < playerList.length; j++) {
+            var currentPlayer = playerList[j];
+
+            result[currentPlayer.getKey()] = new Rating(currentPlayer.getValue().getMean(),
+                currentPlayer.getValue().getStandardDeviation());
         }
     }
 

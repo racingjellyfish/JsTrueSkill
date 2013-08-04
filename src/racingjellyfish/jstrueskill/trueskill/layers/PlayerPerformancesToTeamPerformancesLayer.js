@@ -33,7 +33,7 @@ PlayerPerformancesToTeamPerformancesLayer.prototype.createPriorSchedule = functi
 		var weightedSumFactor = localFactors[i];
 		schedules.push(new ScheduleStep("Perf to Team Perf Step", weightedSumFactor, 0));
 	}
-	return new ScheduleSequence(schedules, "all player perf to team perf schedule");
+	return this.createScheduleSequence(schedules, "all player perf to team perf schedule");
 };
 
 PlayerPerformancesToTeamPerformancesLayer.prototype.createPlayerToTeamSumFactor = function(teamMembers,
@@ -56,7 +56,7 @@ PlayerPerformancesToTeamPerformancesLayer.prototype.createPosteriorSchedule = fu
 			schedules.push(new ScheduleStep("team sum perf @" + j, currentFactor, j));
 		}
 	}
-	return new ScheduleSequence(schedules, "all of the team's sum iterations");
+	return this.createScheduleSequence(schedules, "all of the team's sum iterations");
 };
 
 PlayerPerformancesToTeamPerformancesLayer.prototype.createOutputVariable = function(team) {

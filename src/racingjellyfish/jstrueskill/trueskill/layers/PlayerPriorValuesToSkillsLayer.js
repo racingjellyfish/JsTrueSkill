@@ -25,12 +25,13 @@ PlayerPriorValuesToSkillsLayer.prototype.buildLayer = function() {
 		var currentTeamSkills = [];
 
 		// TODO currentTeam is a map?
-		for (var j = 0 ; j < currentTeam.getPlayers().legnth; j++) {
+		for (var j = 0 ; j < currentTeam.getPlayers().length; j++) {
 			var currentTeamPlayer = currentTeam.getPlayers()[j];
+			var currentTeamPlayerRating = currentTeam.getPlayerRating(currentTeamPlayer);
 			var playerSkill = this.createSkillOutputVariable(currentTeamPlayer);
 			this.addLayerFactor(
 				this.createPriorFactor(currentTeamPlayer,
-				currentTeamPlayer.getValue(), playerSkill));
+				currentTeamPlayerRating, playerSkill));
 			currentTeamSkills.push(playerSkill);
 		}
 
@@ -45,14 +46,14 @@ PlayerPriorValuesToSkillsLayer.prototype.createPriorSchedule = function() {
 		var prior = localFactors[i];
 		schedules.push(new ScheduleStep("Prior to Skill Step", prior, 0));
 	}
-	return new ScheduleSequence(schedules, "All priors");
+	return this.createScheduleSequence(schedules, "All priors");
 };
 
 PlayerPriorValuesToSkillsLayer.prototype.createPriorFactor = function(player, priorRating,
 	skillsVariable) {
 	return new GaussianPriorFactor(priorRating.getMean(),
 		MathUtils.square(priorRating.getStandardDeviation()) +
-		MathUtils.square(getParentFactorGraph().getGameInfo().getDynamicsFactor()),
+		MathUtils.square(this.getParentFactorGraph().getGameInfo().getDynamicsFactor()),
 		skillsVariable);
 };
 

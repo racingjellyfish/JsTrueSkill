@@ -34,7 +34,7 @@ PlayerSkillsToPerformancesLayer.prototype.buildLayer = function() {
 
 PlayerSkillsToPerformancesLayer.prototype.createLikelihood = function(playerSkill,
     playerPerformance) {
-    return new GaussianLikelihoodFactor(MathUtils.square(ParentFactorGraph.getGameInfo().getBeta()), playerPerformance, playerSkill);
+    return new GaussianLikelihoodFactor(MathUtils.square(this.getParentFactorGraph().getGameInfo().getBeta()), playerPerformance, playerSkill);
 };
 
 PlayerSkillsToPerformancesLayer.prototype.createOutputVariable = function(playerKey) {
@@ -46,9 +46,10 @@ PlayerSkillsToPerformancesLayer.prototype.createPriorSchedule = function() {
     var schedules = [];
     var localFactors = this.getLocalFactors();
     for (var i = 0; i < localFactors.length; i++) {
+        var likelihood = localFactors[i];
         schedules.push(new ScheduleStep("Skill to Perf step", likelihood, 0));
     }
-    return new ScheduleSequence(schedules, "All skill to performance sending");
+    return this.createScheduleSequence(schedules, "All skill to performance sending");
 };
 
 PlayerSkillsToPerformancesLayer.prototype.createPosteriorSchedule = function() {
@@ -58,7 +59,7 @@ PlayerSkillsToPerformancesLayer.prototype.createPosteriorSchedule = function() {
         var likelihood = localFactors[i];
         schedules.push(new ScheduleStep("Skill to Perf step", likelihood, 1));
     }
-    return new ScheduleSequence(schedules, "All skill to performance sending");
+    return this.createScheduleSequence(schedules, "All skill to performance sending");
 };
 
 module.exports = PlayerSkillsToPerformancesLayer;

@@ -152,22 +152,22 @@ GaussianWeightedSumFactor.prototype.getLogNormalization = function() {
 };
 
 GaussianWeightedSumFactor.prototype.updateMessage = function(messageIndex) {
-	var vars = this.getVariables();
+	var variables = this.getVariables();
 	var messages = this.getMessages();
 
-	Guard.argumentIsValidIndex(messageIndex, messages.size(), "messageIndex");
+	Guard.argumentIsValidIndex(messageIndex, messages.length, "messageIndex");
 
 	var updatedMessages = [];
 	var updatedVariables = [];
 
-	var indicesToUse = this.variableIndexOrdersForWeights.get(messageIndex);
+	var indicesToUse = this.variableIndexOrdersForWeights[messageIndex];
 
 	// The tricky part here is that we have to put the messages and variables in the same
 	// order as the weights. Thankfully, the weights and messages share the same index numbers,
 	// so we just need to make sure they're consistent
 	for (var i = 0; i < messages.length; i++) {
-		updatedMessages.push(allMessages[indicesToUse[i]]);
-		updatedVariables.push(allVariables[indicesToUse[i]]);
+		updatedMessages.push(messages[indicesToUse[i]]);
+		updatedVariables.push(variables[indicesToUse[i]]);
 	}
 
 	return this.updateHelper(this.weights[messageIndex], this.weightsSquared[messageIndex], updatedMessages, updatedVariables);
@@ -193,7 +193,7 @@ GaussianWeightedSumFactor.prototype.updateHelper = function(weights, weightsSqua
 				messages[i + 1].getValue().getPrecision());
 
 		var diff = GaussianDistribution.divide(variables[i + 1].getValue(),
-			messages.get[i + 1].getValue());
+			messages[i + 1].getValue());
 		anotherInverseOfNewPrecisionSum += weightsSquared[i] / diff.getPrecision();
 
 		weightedMeanSum += weights[i] *
@@ -216,7 +216,8 @@ GaussianWeightedSumFactor.prototype.updateHelper = function(weights, weightsSqua
 	var newMessage = GaussianDistribution.fromPrecisionMean(newPrecisionMean, newPrecision);
 	var anotherNewMessage = GaussianDistribution.fromPrecisionMean(anotherNewPrecisionMean, anotherNewPrecision);
 	if (!newMessage.equals(anotherNewMessage)) {
-		throw new Error("newMessage and anotherNewMessage aren't the same");
+		throw new Error("newMessage: " + newMessage + " and anotherNewMessage " +
+			anotherNewMessage + " aren't the same");
 	}
 
 	var newMarginal = GaussianDistribution.multiply(oldMarginalWithoutMessage, newMessage);
@@ -227,7 +228,7 @@ GaussianWeightedSumFactor.prototype.updateHelper = function(weights, weightsSqua
 	variables[0].setValue(newMarginal);
 
 	// Return the difference in the new marginal
-	return GaussianDistribution.sub(newMarginal, marginal0);
+	return GaussianDistribution.absoluteDifference(newMarginal, marginal0);
 };
 
 module.exports = GaussianWeightedSumFactor;

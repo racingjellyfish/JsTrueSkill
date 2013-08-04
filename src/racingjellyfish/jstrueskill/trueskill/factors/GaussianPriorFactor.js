@@ -20,7 +20,7 @@ var GaussianPriorFactor = function(mean, variance, variable) {
 
 GaussianPriorFactor.prototype = new GaussianFactor();
 
-GaussianPriorFactor.prototype.updateMessage = function(message, variable) {
+GaussianPriorFactor.prototype._updateMessage = function(message, variable) {
 	var oldMarginal = new GaussianDistribution(variable.getValue());
 	var oldMessage = message;
 	var newMarginal = GaussianDistribution.fromPrecisionMean(
@@ -30,7 +30,7 @@ GaussianPriorFactor.prototype.updateMessage = function(message, variable) {
 	variable.setValue(newMarginal);
 	message.setValue(this.newMessage);
 
-	return GaussianDistribution.sub(oldMarginal, newMarginal);
+	return GaussianDistribution.absoluteDifference(oldMarginal, newMarginal);
 };
 
 GaussianPriorFactor.prototype.getLogNormalization = function() {

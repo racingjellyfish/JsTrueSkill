@@ -70,7 +70,7 @@ IteratedTeamDifferencesInnerLayer.prototype.createPriorSchedule = function() {
         totalTeamDifferences),
         this.teamPerformancesToTeamPerformanceDifferencesLayer.getLocalFactors()[totalTeamDifferences - 1], 2));
 
-    return new ScheduleSequence("inner schedule", schedules);
+    return this.createScheduleSequence(schedules, "inner schedule");
 };
 
 IteratedTeamDifferencesInnerLayer.prototype.createTwoTeamInnerPriorLoopSchedule = function() {
@@ -79,7 +79,7 @@ IteratedTeamDifferencesInnerLayer.prototype.createTwoTeamInnerPriorLoopSchedule 
             this.teamPerformancesToTeamPerformanceDifferencesLayer.getLocalFactors()[0], 0));
     schedules.push(new ScheduleStep("send to greater than or within factor",
             this.teamDifferencesComparisonLayer.getLocalFactors()[0], 0));
-    return new ScheduleSequence(schedules, "loop of just two teams inner sequence");
+    return this.createScheduleSequence(schedules, "loop of just two teams inner sequence");
 };
 
 IteratedTeamDifferencesInnerLayer.prototype.createMultipleTeamInnerPriorLoopSchedule = function() {

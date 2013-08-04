@@ -33,7 +33,7 @@ GaussianGreaterThanFactor.prototype.getLogNormalization = function() {
 	return -logProductNormalization + Math.log(cumulativeTo);
 };
 
-GaussianGreaterThanFactor.prototype.updateMessage = function(message, variable) {
+GaussianGreaterThanFactor.prototype._updateMessage = function(message, variable) {
 		var oldMarginal = new GaussianDistribution(variable.getValue());
 		var oldMessage = new GaussianDistribution(message.getValue());
 		var messageFromVar = GaussianDistribution.divide(oldMarginal, oldMessage);

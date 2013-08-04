@@ -32,7 +32,7 @@ GaussianWithinFactor.prototype.getLogNormalization = function() {
 		Math.log(z);
 };
 
-GaussianWithinFactor.prototype.updateMessage = function(message, variable) {
+GaussianWithinFactor.prototype._updateMessage = function(message, variable) {
 	var oldMarginal = new GaussianDistribution(variable.getValue());
 	var oldMessage = new GaussianDistribution(message.getValue());
 	var messageFromVariable = GaussianDistribution.divide(oldMarginal,oldMessage);
@@ -60,7 +60,7 @@ GaussianWithinFactor.prototype.updateMessage = function(message, variable) {
 	variable.setValue(newMarginal);
 
 	// Return the difference in the new marginal
-	return GaussianDistribution.sub(newMarginal, oldMarginal);
+	return GaussianDistribution.absoluteDifference(newMarginal, oldMarginal);
 };
 
 module.exports = GaussianWithinFactor;

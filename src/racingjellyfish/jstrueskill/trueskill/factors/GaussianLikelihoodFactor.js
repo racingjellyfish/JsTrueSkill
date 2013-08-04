@@ -20,8 +20,8 @@ var GaussianLikelihoodFactor = function(betaSquared, variable1, variable2) {
 GaussianLikelihoodFactor.prototype = new GaussianFactor();
 
 GaussianLikelihoodFactor.prototype.getLogNormalization = function() {
-    return GaussianDistribution.logRatioNormalization(this.getVariables[0].getValue(),
-        this.getMessages[0].getValue());
+    return GaussianDistribution.logRatioNormalization(this.getVariables()[0].getValue(),
+        this.getMessages()[0].getValue());
 };
 
 GaussianLikelihoodFactor.prototype.updateHelper = function(message1, message2, variable1,
@@ -48,19 +48,21 @@ GaussianLikelihoodFactor.prototype.updateHelper = function(message1, message2, v
     variable1.setValue(newMarginal);
 
     // Return the difference in the new marginal
-    return GaussianDistribution.sub(newMarginal, marginal1);
+    return GaussianDistribution.absoluteDifference(newMarginal, marginal1);
 };
 
 GaussianLikelihoodFactor.prototype.updateMessage = function(messageIndex) {
     Guard.argumentIsValidIndex(messageIndex, 2, "messageIndex");
 
+    var message0 = this.getMessages()[0];
+    var message1 = this.getMessages()[1];
+    var variable0 = this.getVariables()[0];
+    var variable1 = this.getVariables()[1];
     switch (messageIndex) {
         case 0:
-            return this.updateHelper(getMessages().get(0), getMessages().get(1),
-                                getVariables().get(0), getVariables().get(1));
+            return this.updateHelper(message0, message1, variable0, variable1);
         case 1:
-            return this.updateHelper(getMessages().get(1), getMessages().get(0),
-                                getVariables().get(1), getVariables().get(0));
+            return this.updateHelper(message1, message0, variable1, variable0);
     }
 };
 

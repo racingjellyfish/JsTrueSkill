@@ -5,7 +5,7 @@ var FactorList = function() {
     this.factors = [];
 };
 
-FactorList.prototype.size = function() {
+FactorList.prototype.getSize = function() {
     return this.factors.length;
 };
 

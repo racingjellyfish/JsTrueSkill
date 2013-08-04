@@ -81,7 +81,7 @@ Factor.prototype.updateMessage = function(messageIndex) {
 	Guard.argumentIsValidIndex(messageIndex, this.messages.length, "messageIndex");
 
 	var message = this.messages[messageIndex];
-	return this.updateMessage(message, this.messageToVariableBinding[message]);
+	return this._updateMessage(message, this.messageToVariableBinding[message]);
 };
 
 /**
@@ -94,12 +94,12 @@ Factor.prototype.sendMessage = function(messageIndex) {
 		throw new Error('UnsupportedOperationException');
 	}
 
-	Guard.argumentIsValidIndex(messageIndex, this.messages.size(), "messageIndex");
+	Guard.argumentIsValidIndex(messageIndex, this.messages.length, "messageIndex");
 
 	var message = this.messages[messageIndex];
 	var variable = this.messageToVariableBinding[message];
 
-	return this.sendMessage(message, variable);
+	return this._sendMessage(message, variable);
 };
 
 Factor.prototype.toString = function() {
