@@ -8,6 +8,7 @@
  */
 var FactorGraphTrueSkillCalculator =
     require('../../../../../src/racingjellyfish/jstrueskill/trueskill/FactorGraphTrueSkillCalculator');
+var FactorGraphTestCases = require('./FactorGraphTestCases');
 var TwoPlayerTestCases = require('./TwoPlayerTestCases');
 var TwoTeamTestCases = require('./TwoTeamTestCases');
 
@@ -100,3 +101,44 @@ exports.testFourOnFourSimple = function(test) {
     TwoTeamTestCases.testFourOnFourSimple(test, calculator);
 };
 
+/*
+ * All multiple team scenarios.
+ */
+exports.testThreeTeamsOfOneNotDrawn = function(test) {
+    FactorGraphTestCases.testThreeTeamsOfOneNotDrawn(test, calculator);
+};
+
+exports.testThreeTeamsOfOneDrawn = function(test) {
+    FactorGraphTestCases.testThreeTeamsOfOneDrawn(test, calculator);
+};
+
+exports.testFourTeamsOfOneNotDrawn = function(test) {
+    FactorGraphTestCases.testFourTeamsOfOneNotDrawn(test, calculator);
+};
+
+exports.testFiveTeamsOfOneNotDrawn = function(test) {
+    FactorGraphTestCases.testFiveTeamsOfOneNotDrawn(test, calculator);
+};
+
+exports.testEightTeamsOfOneDrawn = function(test) {
+    FactorGraphTestCases.testEightTeamsOfOneDrawn(test, calculator);
+};
+
+exports.testEightTeamsOfOneUpset = function(test) {
+    FactorGraphTestCases.testEightTeamsOfOneUpset(test, calculator);
+};
+
+exports.testSixteenTeamsOfOneNotDrawn = function(test) {
+    FactorGraphTestCases.testSixteenTeamsOfOneNotDrawn(test, calculator);
+};
+
+exports.testTwoOnFourOnTwoWinDraw = function(test) {
+    FactorGraphTestCases.testTwoOnFourOnTwoWinDraw(test, calculator);
+};
+
+/*
+ * Partial play scenario.
+ */
+exports.testOneOnTwoBalancedPartialPlay = function(test) {
+    FactorGraphTestCases.testOneOnTwoBalancedPartialPlay(test, calculator);
+};
