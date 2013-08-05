@@ -58,14 +58,15 @@ GaussianGreaterThanFactor.prototype._updateMessage = function(message, variable)
 
 		var newMarginal = GaussianDistribution.fromPrecisionMean(newPrecisionMean, newPrecision);
 
-		var newMessage = GaussianDistribution.divide(mult(oldMessage,newMarginal),oldMarginal);
+		var newMessage = GaussianDistribution.divide(
+			GaussianDistribution.multiply(oldMessage, newMarginal), oldMarginal);
 
 		// Update the message and marginal
 		message.setValue(newMessage);
 		variable.setValue(newMarginal);
 
 		// Return the difference in the new marginal
-		return GaussianDistribution.sub(newMarginal, oldMarginal);
+		return GaussianDistribution.absoluteDifference(newMarginal, oldMarginal);
 };
 
 module.exports = GaussianGreaterThanFactor;
