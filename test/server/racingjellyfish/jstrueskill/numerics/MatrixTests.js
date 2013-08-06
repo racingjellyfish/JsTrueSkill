@@ -163,68 +163,51 @@ exports.testEquals = function(test) {
 	test.done();
 };
 
-/*
-
-exports.test = function(test) {
+exports.testInverse = function(test) {
+	// see http://www.mathwords.com/i/inverse_of_a_SimpleMatrix.htm
 	var matrix0 = Matrix.create([
+			[4, 3],
+			[3, 2]
 		]);
 
-	var expected = 0;
-	testExt.equalsWithTolerance(test, matrix0.determinant(), expected, ERROR_TOLERANCE, "Expected 3x3 matrix0 determinant to be " + expected);
+	var matrix1 = Matrix.create([
+			[-2, 3],
+			[3, -4]
+		]);
+
+	var actual = matrix0.inverse();
+	var expected = matrix1;
+	test.ok(actual.eql(expected), ERROR_TOLERANCE,
+		"Expected 2x2 matrix0.inverse() to be " + expected.inspect());
+
+	actual = matrix0.multiply(matrix0.inverse());
+	expected = Matrix.I(2);
+	test.ok(actual.eql(expected), ERROR_TOLERANCE,
+		"Expected 2x2 matrix0.multiply(matrix0.inverse()) to be " +
+		expected.inspect());
+
+	matrix0 = Matrix.create([
+			[1, 2, 3],
+			[0, 4, 5],
+			[1, 0, 6]
+		]);
+
+	matrix1 = Matrix.create([
+			[24, -12, -2],
+			[5, 3, -5],
+			[-4, 2, 4]
+		]).multiply(1.0 / 22.0);
+
+	actual = matrix0.inverse();
+	expected = matrix1;
+	test.ok(actual.eql(expected), ERROR_TOLERANCE,
+		"Expected 3x3 matrix0.inverse() to be " + expected.inspect());
+
+	actual = matrix0.multiply(matrix0.inverse());
+	expected = Matrix.I(3);
+	test.ok(actual.eql(expected), ERROR_TOLERANCE,
+		"Expected 3x3 matrix0.multiply(matrix0.inverse()) to be " +
+		expected.inspect());
 
 	test.done();
 };
-
-public class MatrixTests {
-
-	public void EqualsTest() {
-		SimpleMatrix a = new SimpleMatrix(new double[][] { { 1, 2 }, { 3, 4 } });
-
-		SimpleMatrix b = new SimpleMatrix(new double[][] { { 1, 2 }, { 3, 4 } });
-
-		assertTrue(a.isIdentical(b, ERROR_TOLERANCE));
-
-		SimpleMatrix c = new SimpleMatrix(new double[][] { { 1, 2, 3 }, { 1, 2, 3 }, { 4, 5, 6 } });
-
-		SimpleMatrix d = new SimpleMatrix(new double[][] { { 1, 2, 3 }, { 1, 2, 3 }, { 4, 5, 6 } });
-
-		assertTrue(c.isIdentical(d, ERROR_TOLERANCE));
-
-		SimpleMatrix e = new SimpleMatrix(new double[][] { { 1, 1, 4 }, { 2, 2, 5 }, { 3, 3, 6 } });
-
-		SimpleMatrix f = e.transpose();
-		assertTrue(d.isIdentical(f, ERROR_TOLERANCE));
-		// TODO Doesn't work yet - fix if anyone is hashing SimpleMatrices.
-		// http://code.google.com/p/efficient-java-matrix-library/issues/detail?id=4
-		// assertEquals(d.hashCode(), f.hashCode());
-	}
-
-	@Test
-	public void InverseTests() {
-		// see http://www.mathwords.com/i/inverse_of_a_SimpleMatrix.htm
-		SimpleMatrix a = new SimpleMatrix(new double[][] { { 4, 3 }, { 3, 2 } });
-
-		SimpleMatrix b = new SimpleMatrix(new double[][] { { -2, 3 }, { 3, -4 } });
-
-		SimpleMatrix aInverse = a.invert();
-		assertTrue(b.isIdentical(aInverse, ERROR_TOLERANCE));
-
-		SimpleMatrix identity2x2 = SimpleMatrix.identity(2);
-
-		SimpleMatrix aaInverse = a.mult(aInverse);
-		assertTrue(aaInverse.isIdentical(identity2x2, ERROR_TOLERANCE));
-
-		SimpleMatrix c = new SimpleMatrix(new double[][] { { 1, 2, 3 }, { 0, 4, 5 }, { 1, 0, 6 } });
-
-		SimpleMatrix cInverse = c.invert();
-		SimpleMatrix d = new SimpleMatrix(new double[][] { { 24, -12, -2 }, { 5, 3, -5 }, { -4, 2, 4 } })
-	.scale(1.0 / 22.);
-
-		assertTrue(d.isIdentical(cInverse, ERROR_TOLERANCE));
-		SimpleMatrix identity3x3 = SimpleMatrix.identity(3);
-
-		SimpleMatrix ccInverse = c.mult(cInverse);
-		assertTrue(ccInverse.isIdentical(identity3x3, ERROR_TOLERANCE));
-	}
-}
-	*/
