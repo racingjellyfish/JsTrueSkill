@@ -41,8 +41,7 @@ PlayerPerformancesToTeamPerformancesLayer.prototype.createPlayerToTeamSumFactor 
 	sumVariable) {
 	var weights = new Array(teamMembers.length);
 	for (var i = 0; i < weights.length; i++) {
-		// TODO is teamMembers a map?
-		weights[i] = PartialPlay.getPartialPlayPercentage(teamMembers[i]);
+		weights[i] = PartialPlay.getPartialPlayPercentage(teamMembers[i].getKey());
 	}
 	return new GaussianWeightedSumFactor(sumVariable, teamMembers, weights);
 };

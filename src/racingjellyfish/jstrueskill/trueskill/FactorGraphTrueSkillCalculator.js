@@ -58,7 +58,7 @@ FactorGraphTrueSkillCalculator.prototype.calculateMatchQuality = function(gameIn
 	var meanVectorTranspose = meanVector.transpose();
 
 	var playerTeamAssignmentsMatrix = this.createPlayerTeamAssignmentMatrix(teamAssignmentsList,
-			meanVector.dimensions());
+			meanVector.elements.length);
 	var playerTeamAssignmentsMatrixTranspose = playerTeamAssignmentsMatrix.transpose();
 
 	var betaSquared = MathUtils.square(gameInfo.getBeta());
@@ -174,18 +174,24 @@ FactorGraphTrueSkillCalculator.prototype.createPlayerTeamAssignmentMatrix =
 
 	for (var i = 0; i < teamAssignmentsList.length - 1; i++) {
 		var currentTeam = teamAssignmentsList[i];
-
 		// Need to add in 0's for all the previous players, since they're not
 		// on this team
-		var currentRowValues = [];
+		var currentRowValues = new Array(totalPlayers);
+		var index;
+		for (index = 0; index < totalPlayers; index++) {
+			currentRowValues[index] = 0;
+		}
+		index = 0;
 		for (var j = 0; j < totalPreviousPlayers; j++) {
-			currentRowValues.push(0);
+			currentRowValues[index] = 0;
+			index++;
 		}
 		playerAssignments.push(currentRowValues);
 
 		for (var k = 0; k < currentTeam.getPlayers().length; k++) {
 			var player = currentTeam.getPlayers()[k];
-			currentRowValues.push(PartialPlay.getPartialPlayPercentage(player));
+			currentRowValues[index] = PartialPlay.getPartialPlayPercentage(player);
+			index++;
 			// indicates the player is on the team
 			totalPreviousPlayers++;
 		}
@@ -194,7 +200,8 @@ FactorGraphTrueSkillCalculator.prototype.createPlayerTeamAssignmentMatrix =
 		for (var m = 0; m < nextTeam.getPlayers().length; m++) {
 			var nextTeamPlayer = nextTeam.getPlayers()[m];
 			// Add a -1 * playing time to represent the difference
-			currentRowValues.push(-1 * PartialPlay.getPartialPlayPercentage(nextTeamPlayer));
+			currentRowValues[index] = -1 * PartialPlay.getPartialPlayPercentage(nextTeamPlayer);
+			index++;
 		}
 	}
 

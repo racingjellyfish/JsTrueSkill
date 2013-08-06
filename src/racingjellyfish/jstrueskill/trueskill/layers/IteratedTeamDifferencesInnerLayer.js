@@ -96,8 +96,8 @@ IteratedTeamDifferencesInnerLayer.prototype.createMultipleTeamInnerPriorLoopSche
             i), this.teamDifferencesComparisonLayer.getLocalFactors()[i], 0));
         forwardSchedules.push(new ScheduleStep(util.format("team perf to perf diff factors [%s], 2",
             i), this.teamPerformancesToTeamPerformanceDifferencesLayer.getLocalFactors()[i], 2));
-        var currentForwardSchedulePiece = new ScheduleSequence(forwardSchedules,
-            "current forward schedule piece %d", i);
+        var currentForwardSchedulePiece = this.createScheduleSequence(forwardSchedules,
+            "current forward schedule piece %d", [i]);
 
         forwardScheduleList.push(currentForwardSchedulePiece);
     }
