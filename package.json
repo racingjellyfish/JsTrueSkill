@@ -13,6 +13,9 @@
 	],
 	"author": "Adrian Conlin",
 	"license": "BSD",
+	"dependencies": {
+		"sylvester": "~0.0.21"
+	},
 	"devDependencies": {
 		"grunt": "~0.4.1",
 		"grunt-contrib-concat": "~0.3.0",
@@ -22,7 +25,6 @@
 		"grunt-contrib-qunit": "~0.2.2",
 		"grunt-contrib-uglify": "~0.2.2",
 		"grunt-contrib-watch": "~0.4.4",
-		"nodeunit": "~0.8.1",
-		"sylvester": "~0.0.21"
+		"nodeunit": "~0.8.1"
 	}
 }
