@@ -1,5 +1,5 @@
-var Factor = require('../../../../../src/racingjellyfish/jstrueskill/factorgraphs/Factor');
-var FactorList = require('../../../../../src/racingjellyfish/jstrueskill/factorgraphs/FactorList');
+var Factor = require('../../../../../lib/racingjellyfish/jstrueskill/factorgraphs/Factor');
+var FactorList = require('../../../../../lib/racingjellyfish/jstrueskill/factorgraphs/FactorList');
 
 exports.testBasicValues = function(test) {
 	var factorList = new FactorList();

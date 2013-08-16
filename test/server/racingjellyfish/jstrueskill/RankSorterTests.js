@@ -1,7 +1,7 @@
-var RankSorter = require('../../../../src/racingjellyfish/jstrueskill/RankSorter');
-var GameInfo = require('../../../../src/racingjellyfish/jstrueskill/GameInfo');
-var Player = require('../../../../src/racingjellyfish/jstrueskill/Player');
-var Team = require('../../../../src/racingjellyfish/jstrueskill/Team');
+var RankSorter = require('../../../../lib/racingjellyfish/jstrueskill/RankSorter');
+var GameInfo = require('../../../../lib/racingjellyfish/jstrueskill/GameInfo');
+var Player = require('../../../../lib/racingjellyfish/jstrueskill/Player');
+var Team = require('../../../../lib/racingjellyfish/jstrueskill/Team');
 
 exports.testNoConstructor = function(test) {
 	test.ok(typeof RankSorter !== 'function', 'No constructor expected');

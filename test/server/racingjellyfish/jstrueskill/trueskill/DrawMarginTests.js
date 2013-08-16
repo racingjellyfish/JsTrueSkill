@@ -1,4 +1,4 @@
-var DrawMargin = require('../../../../../src/racingjellyfish/jstrueskill/trueskill/DrawMargin');
+var DrawMargin = require('../../../../../lib/racingjellyfish/jstrueskill/trueskill/DrawMargin');
 var testExt = require('../../../../libs/nodeunit-ext');
 
 var ERROR_TOLERANCE = 0.000001;

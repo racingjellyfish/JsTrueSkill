@@ -1,4 +1,4 @@
-var TeamDifferencesComparisonLayer = require('../../../../../../src/racingjellyfish/jstrueskill/trueskill/layers/TeamDifferencesComparisonLayer');
+var TeamDifferencesComparisonLayer = require('../../../../../../lib/racingjellyfish/jstrueskill/trueskill/layers/TeamDifferencesComparisonLayer');
 
 exports.testConstructor = function(test) {
 	var parentFactorGraph = {

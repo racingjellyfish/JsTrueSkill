@@ -1,4 +1,4 @@
-var Message = require('../../../../../src/racingjellyfish/jstrueskill/factorgraphs/Message');
+var Message = require('../../../../../lib/racingjellyfish/jstrueskill/factorgraphs/Message');
 
 exports.testDefaultValues = function(test) {
 	var message = new Message();

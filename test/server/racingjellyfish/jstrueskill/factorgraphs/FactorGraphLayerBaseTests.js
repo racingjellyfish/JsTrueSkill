@@ -1,4 +1,4 @@
-var FactorGraphLayerBase = require('../../../../../src/racingjellyfish/jstrueskill/factorgraphs/FactorGraphLayerBase');
+var FactorGraphLayerBase = require('../../../../../lib/racingjellyfish/jstrueskill/factorgraphs/FactorGraphLayerBase');
 
 exports.testBasicValues = function(test) {
 	var factorGraphLayerBase = new FactorGraphLayerBase();

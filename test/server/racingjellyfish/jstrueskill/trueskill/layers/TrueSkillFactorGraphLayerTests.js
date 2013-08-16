@@ -1,4 +1,4 @@
-var TrueSkillFactorGraphLayer = require('../../../../../../src/racingjellyfish/jstrueskill/trueskill/layers/TrueSkillFactorGraphLayer');
+var TrueSkillFactorGraphLayer = require('../../../../../../lib/racingjellyfish/jstrueskill/trueskill/layers/TrueSkillFactorGraphLayer');
 
 exports.testConstructor = function(test) {
 	var trueSkillFactorGraphLayer =

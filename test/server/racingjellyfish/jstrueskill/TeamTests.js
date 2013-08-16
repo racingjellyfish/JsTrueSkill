@@ -1,6 +1,6 @@
-var Rating = require('../../../../src/racingjellyfish/jstrueskill/Rating');
-var Player = require('../../../../src/racingjellyfish/jstrueskill/Player');
-var Team = require('../../../../src/racingjellyfish/jstrueskill/Team');
+var Rating = require('../../../../lib/racingjellyfish/jstrueskill/Rating');
+var Player = require('../../../../lib/racingjellyfish/jstrueskill/Player');
+var Team = require('../../../../lib/racingjellyfish/jstrueskill/Team');
 
 exports.testBasicValues = function(test) {
 	var team = new Team('One');

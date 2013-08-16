@@ -1,4 +1,4 @@
-var Variable = require('../../../../../src/racingjellyfish/jstrueskill/factorgraphs/Variable');
+var Variable = require('../../../../../lib/racingjellyfish/jstrueskill/factorgraphs/Variable');
 
 exports.testBasicValues = function(test) {
 	var variable = new Variable(-1, 'Test');

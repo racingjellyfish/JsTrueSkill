@@ -1,4 +1,4 @@
-var Rating = require('../../../../src/racingjellyfish/jstrueskill/Rating');
+var Rating = require('../../../../lib/racingjellyfish/jstrueskill/Rating');
 
 exports.testConstructor = function(test) {
 	var rating = new Rating(0, 1);

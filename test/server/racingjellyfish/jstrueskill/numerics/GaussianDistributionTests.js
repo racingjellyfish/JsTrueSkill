@@ -1,9 +1,9 @@
 var Rating =
-	require('../../../../../src/racingjellyfish/jstrueskill/Rating');
+	require('../../../../../lib/racingjellyfish/jstrueskill/Rating');
 var GaussianDistribution =
-	require('../../../../../src/racingjellyfish/jstrueskill/numerics/GaussianDistribution');
+	require('../../../../../lib/racingjellyfish/jstrueskill/numerics/GaussianDistribution');
 var MathUtils =
-	require('../../../../../src/racingjellyfish/jstrueskill/numerics/MathUtils');
+	require('../../../../../lib/racingjellyfish/jstrueskill/numerics/MathUtils');
 var testExt = require('../../../../libs/nodeunit-ext');
 
 var ERROR_TOLERANCE = 0.000001;

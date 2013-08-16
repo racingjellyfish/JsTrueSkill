@@ -1,4 +1,4 @@
-var SupportedOptions = require('../../../../src/racingjellyfish/jstrueskill/SupportedOptions');
+var SupportedOptions = require('../../../../lib/racingjellyfish/jstrueskill/SupportedOptions');
 
 exports.testBasicValues = function(test) {
 	var supportedOption = SupportedOptions.PartialPlay;

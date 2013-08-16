@@ -4,7 +4,7 @@
  * cover the scenarios with more than 1 player on each team.
  */
 var TwoTeamTrueSkillCalculator =
-    require('../../../../../src/racingjellyfish/jstrueskill/trueskill/TwoTeamTrueSkillCalculator');
+    require('../../../../../lib/racingjellyfish/jstrueskill/trueskill/TwoTeamTrueSkillCalculator');
 var TwoPlayerTestCases = require('./TwoPlayerTestCases');
 var TwoTeamTestCases = require('./TwoTeamTestCases');
 

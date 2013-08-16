@@ -1,4 +1,4 @@
-var ScheduleStep = require('../../../../../src/racingjellyfish/jstrueskill/factorgraphs/ScheduleStep');
+var ScheduleStep = require('../../../../../lib/racingjellyfish/jstrueskill/factorgraphs/ScheduleStep');
 
 exports.testConstructor = function(test) {
 	var scheduleStep = new ScheduleStep('ScheduleStepTest', {}, 0);

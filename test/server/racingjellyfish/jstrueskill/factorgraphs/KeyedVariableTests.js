@@ -1,4 +1,4 @@
-var KeyedVariable = require('../../../../../src/racingjellyfish/jstrueskill/factorgraphs/KeyedVariable');
+var KeyedVariable = require('../../../../../lib/racingjellyfish/jstrueskill/factorgraphs/KeyedVariable');
 
 exports.testBasicValues = function(test) {
 	var variable = new KeyedVariable('key', -1, 'Test');

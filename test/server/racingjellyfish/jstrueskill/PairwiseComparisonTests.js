@@ -1,4 +1,4 @@
-var PairwiseComparison = require('../../../../src/racingjellyfish/jstrueskill/PairwiseComparison');
+var PairwiseComparison = require('../../../../lib/racingjellyfish/jstrueskill/PairwiseComparison');
 
 exports.testConstructor = function(test) {
 	var pairwiseComparison = new PairwiseComparison(1);

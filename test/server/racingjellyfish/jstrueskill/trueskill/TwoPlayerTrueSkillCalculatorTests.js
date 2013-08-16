@@ -1,5 +1,5 @@
 var TwoPlayerTrueSkillCalculator =
-    require('../../../../../src/racingjellyfish/jstrueskill/trueskill/TwoPlayerTrueSkillCalculator');
+    require('../../../../../lib/racingjellyfish/jstrueskill/trueskill/TwoPlayerTrueSkillCalculator');
 var TwoPlayerTestCases = require('./TwoPlayerTestCases');
 
 var calculator;

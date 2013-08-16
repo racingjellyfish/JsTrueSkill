@@ -7,7 +7,7 @@
  * capabilities of the calculator.
  */
 var FactorGraphTrueSkillCalculator =
-    require('../../../../../src/racingjellyfish/jstrueskill/trueskill/FactorGraphTrueSkillCalculator');
+    require('../../../../../lib/racingjellyfish/jstrueskill/trueskill/FactorGraphTrueSkillCalculator');
 var FactorGraphTestCases = require('./FactorGraphTestCases');
 var TwoPlayerTestCases = require('./TwoPlayerTestCases');
 var TwoTeamTestCases = require('./TwoTeamTestCases');

@@ -1,4 +1,4 @@
-var FactorGraph = require('../../../../../src/racingjellyfish/jstrueskill/factorgraphs/FactorGraph');
+var FactorGraph = require('../../../../../lib/racingjellyfish/jstrueskill/factorgraphs/FactorGraph');
 
 exports.testConstructor = function(test) {
 	var factorGraph = new FactorGraph();

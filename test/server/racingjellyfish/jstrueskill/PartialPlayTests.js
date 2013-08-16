@@ -1,5 +1,5 @@
-var PartialPlay = require('../../../../src/racingjellyfish/jstrueskill/PartialPlay');
-var Player = require('../../../../src/racingjellyfish/jstrueskill/Player');
+var PartialPlay = require('../../../../lib/racingjellyfish/jstrueskill/PartialPlay');
+var Player = require('../../../../lib/racingjellyfish/jstrueskill/Player');
 
 exports.testNoConstructor = function(test) {
 	test.ok(typeof PartialPlay !== 'function', 'No constructor expected');

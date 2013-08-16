@@ -18,10 +18,10 @@
  * point.  Due to this implementation using slightly higher precision in
  * GaussianDistribution class.
  */
-var GameInfo = require('../../../../../src/racingjellyfish/jstrueskill/GameInfo');
-var Player = require('../../../../../src/racingjellyfish/jstrueskill/Player');
-var Rating = require('../../../../../src/racingjellyfish/jstrueskill/Rating');
-var Team = require('../../../../../src/racingjellyfish/jstrueskill/Team');
+var GameInfo = require('../../../../../lib/racingjellyfish/jstrueskill/GameInfo');
+var Player = require('../../../../../lib/racingjellyfish/jstrueskill/Player');
+var Rating = require('../../../../../lib/racingjellyfish/jstrueskill/Rating');
+var Team = require('../../../../../lib/racingjellyfish/jstrueskill/Team');
 var TestUtil = require('../TestUtil');
 
 /*

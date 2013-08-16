@@ -1,4 +1,4 @@
-var DefaultVariable = require('../../../../../src/racingjellyfish/jstrueskill/factorgraphs/DefaultVariable');
+var DefaultVariable = require('../../../../../lib/racingjellyfish/jstrueskill/factorgraphs/DefaultVariable');
 
 exports.testBasicValues = function(test) {
 	var variable = new DefaultVariable();

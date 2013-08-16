@@ -1,5 +1,5 @@
 var VariableFactory =
-	require('../../../../../src/racingjellyfish/jstrueskill/factorgraphs/VariableFactory');
+	require('../../../../../lib/racingjellyfish/jstrueskill/factorgraphs/VariableFactory');
 
 exports.testCreateBasicVariable = function(test) {
 	var priorInitializer = function() {

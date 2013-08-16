@@ -1,5 +1,5 @@
 var KeyedVariableFactory =
-	require('../../../../../src/racingjellyfish/jstrueskill/factorgraphs/KeyedVariableFactory');
+	require('../../../../../lib/racingjellyfish/jstrueskill/factorgraphs/KeyedVariableFactory');
 
 exports.testCreateKeyedVariable = function(test) {
 	var priorInitializer = function() {

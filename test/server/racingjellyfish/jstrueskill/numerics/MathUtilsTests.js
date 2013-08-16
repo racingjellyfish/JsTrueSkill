@@ -1,4 +1,4 @@
-var MathUtils = require('../../../../../src/racingjellyfish/jstrueskill/numerics/MathUtils');
+var MathUtils = require('../../../../../lib/racingjellyfish/jstrueskill/numerics/MathUtils');
 
 exports.testSquare = function(test) {
 	test.expect(5);

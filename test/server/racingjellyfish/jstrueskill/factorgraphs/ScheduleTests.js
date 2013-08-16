@@ -1,4 +1,4 @@
-var Schedule = require('../../../../../src/racingjellyfish/jstrueskill/factorgraphs/Schedule');
+var Schedule = require('../../../../../lib/racingjellyfish/jstrueskill/factorgraphs/Schedule');
 
 exports.testConstructor = function(test) {
 	var schedule = new Schedule('ScheduleTest');

@@ -1,4 +1,4 @@
-var Range = require('../../../../../src/racingjellyfish/jstrueskill/numerics/Range');
+var Range = require('../../../../../lib/racingjellyfish/jstrueskill/numerics/Range');
 
 exports.testRange = function(test) {
 	test.expect(6);

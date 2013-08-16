@@ -1,4 +1,4 @@
-var GaussianLikelihoodFactor = require('../../../../../../src/racingjellyfish/jstrueskill/trueskill/factors/GaussianLikelihoodFactor');
+var GaussianLikelihoodFactor = require('../../../../../../lib/racingjellyfish/jstrueskill/trueskill/factors/GaussianLikelihoodFactor');
 
 exports.testConstructor = function(test) {
 	var gaussianLikelihoodFactor = new GaussianLikelihoodFactor({}, {}, {});

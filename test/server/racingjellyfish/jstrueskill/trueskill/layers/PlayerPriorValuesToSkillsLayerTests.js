@@ -1,4 +1,4 @@
-var PlayerPriorValuesToSkillsLayer = require('../../../../../../src/racingjellyfish/jstrueskill/trueskill/layers/PlayerPriorValuesToSkillsLayer');
+var PlayerPriorValuesToSkillsLayer = require('../../../../../../lib/racingjellyfish/jstrueskill/trueskill/layers/PlayerPriorValuesToSkillsLayer');
 
 exports.testConstructor = function(test) {
 	var playerPriorValuesToSkillsLayer =

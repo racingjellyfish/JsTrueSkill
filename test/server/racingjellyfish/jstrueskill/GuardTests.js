@@ -1,4 +1,4 @@
-var Guard = require('../../../../src/racingjellyfish/jstrueskill/Guard');
+var Guard = require('../../../../lib/racingjellyfish/jstrueskill/Guard');
 
 exports.testNoConstructor = function(test) {
 	test.ok(typeof Guard !== 'function', 'No constructor expected');

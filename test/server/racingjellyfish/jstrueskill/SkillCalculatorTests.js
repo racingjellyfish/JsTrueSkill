@@ -1,9 +1,9 @@
-var Player = require('../../../../src/racingjellyfish/jstrueskill/Player');
-var Rating = require('../../../../src/racingjellyfish/jstrueskill/Rating');
-var SkillCalculator = require('../../../../src/racingjellyfish/jstrueskill/SkillCalculator');
-var SupportedOptions = require('../../../../src/racingjellyfish/jstrueskill/SupportedOptions');
-var Team = require('../../../../src/racingjellyfish/jstrueskill/Team');
-var Range = require('../../../../src/racingjellyfish/jstrueskill/numerics/Range');
+var Player = require('../../../../lib/racingjellyfish/jstrueskill/Player');
+var Rating = require('../../../../lib/racingjellyfish/jstrueskill/Rating');
+var SkillCalculator = require('../../../../lib/racingjellyfish/jstrueskill/SkillCalculator');
+var SupportedOptions = require('../../../../lib/racingjellyfish/jstrueskill/SupportedOptions');
+var Team = require('../../../../lib/racingjellyfish/jstrueskill/Team');
+var Range = require('../../../../lib/racingjellyfish/jstrueskill/numerics/Range');
 
 exports.testConstructor = function(test) {
 	var skillCalculator = new SkillCalculator([],

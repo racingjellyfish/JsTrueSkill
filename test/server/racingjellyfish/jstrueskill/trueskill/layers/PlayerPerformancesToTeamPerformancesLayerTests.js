@@ -1,4 +1,4 @@
-var PlayerPerformancesToTeamPerformancesLayer = require('../../../../../../src/racingjellyfish/jstrueskill/trueskill/layers/PlayerPerformancesToTeamPerformancesLayer');
+var PlayerPerformancesToTeamPerformancesLayer = require('../../../../../../lib/racingjellyfish/jstrueskill/trueskill/layers/PlayerPerformancesToTeamPerformancesLayer');
 
 exports.testConstructor = function(test) {
 	var playerPerformancesToTeamPerformancesLayer =

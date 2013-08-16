@@ -1,4 +1,4 @@
-var IteratedTeamDifferencesInnerLayer = require('../../../../../../src/racingjellyfish/jstrueskill/trueskill/layers/IteratedTeamDifferencesInnerLayer');
+var IteratedTeamDifferencesInnerLayer = require('../../../../../../lib/racingjellyfish/jstrueskill/trueskill/layers/IteratedTeamDifferencesInnerLayer');
 
 exports.testConstructor = function(test) {
 	var iteratedTeamDifferencesInnerLayer =

@@ -1,4 +1,4 @@
-var Player = require('../../../../src/racingjellyfish/jstrueskill/Player');
+var Player = require('../../../../lib/racingjellyfish/jstrueskill/Player');
 
 exports.testBasicValues = function(test) {
 	var player = new Player('One');

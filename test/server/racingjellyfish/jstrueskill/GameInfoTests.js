@@ -1,4 +1,4 @@
-var GameInfo = require('../../../../src/racingjellyfish/jstrueskill/GameInfo');
+var GameInfo = require('../../../../lib/racingjellyfish/jstrueskill/GameInfo');
 
 var mean = 25.0;
 var standardDeviation = mean / 3.0;

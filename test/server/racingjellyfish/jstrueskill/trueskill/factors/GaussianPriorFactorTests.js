@@ -1,4 +1,4 @@
-var GaussianPriorFactor = require('../../../../../../src/racingjellyfish/jstrueskill/trueskill/factors/GaussianPriorFactor');
+var GaussianPriorFactor = require('../../../../../../lib/racingjellyfish/jstrueskill/trueskill/factors/GaussianPriorFactor');
 
 exports.testConstructor = function(test) {
 	var gaussianPriorFactor = new GaussianPriorFactor({}, {}, {});

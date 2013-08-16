@@ -1,8 +1,8 @@
-var Factor = require('../../../../../src/racingjellyfish/jstrueskill/factorgraphs/Factor');
-var Message = require('../../../../../src/racingjellyfish/jstrueskill/factorgraphs/Message');
+var Factor = require('../../../../../lib/racingjellyfish/jstrueskill/factorgraphs/Factor');
+var Message = require('../../../../../lib/racingjellyfish/jstrueskill/factorgraphs/Message');
 var DefaultVariable =
-	require('../../../../../src/racingjellyfish/jstrueskill/factorgraphs/DefaultVariable');
-var Variable = require('../../../../../src/racingjellyfish/jstrueskill/factorgraphs/Variable');
+	require('../../../../../lib/racingjellyfish/jstrueskill/factorgraphs/DefaultVariable');
+var Variable = require('../../../../../lib/racingjellyfish/jstrueskill/factorgraphs/Variable');
 
 exports.testBasicValues = function(test) {
 	var factor = new Factor('Test');

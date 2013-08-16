@@ -1,4 +1,4 @@
-var GaussianFactor = require('../../../../../../src/racingjellyfish/jstrueskill/trueskill/factors/GaussianFactor');
+var GaussianFactor = require('../../../../../../lib/racingjellyfish/jstrueskill/trueskill/factors/GaussianFactor');
 
 exports.testConstructor = function(test) {
 	var gaussianFactor = new GaussianFactor('GaussianFactorTest');

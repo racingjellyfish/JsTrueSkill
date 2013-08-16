@@ -1,4 +1,4 @@
-var TrueSkillFactorGraph = require('../../../../../src/racingjellyfish/jstrueskill/trueskill/TrueSkillFactorGraph');
+var TrueSkillFactorGraph = require('../../../../../lib/racingjellyfish/jstrueskill/trueskill/TrueSkillFactorGraph');
 
 exports.testConstructor = function(test) {
 	var gameInfo = {
