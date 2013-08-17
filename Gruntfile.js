@@ -25,7 +25,7 @@ module.exports = function(grunt) {
 			}
 		},
 		nodeunit: {
-			all: ['test/server/**/*Tests.js']
+			all: ['test/racingjellyfish/**/*Tests.js']
 		},
 		qunit: {
 			options: {
