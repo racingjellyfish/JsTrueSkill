@@ -1,1 +1,1 @@
-module.exports = require('./src/racingjellyfish/jstrueskill/TrueSkillCalculator');
+module.exports = require('./lib/racingjellyfish/jstrueskill/TrueSkillCalculator');
