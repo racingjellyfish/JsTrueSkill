@@ -2,9 +2,9 @@
 
 A JavaScript implementation of the TrueSkill ranking algorithm.
 
-Ported from the (Java implementation)[https://github.com/davidbilge/JSkills].
+Ported from the [Java implementation](https://github.com/davidbilge/JSkills).
 
-Which in turn is ported from the (C# implementation)[https://github.com/moserware/Skills].
+Which in turn is ported from the [C# implementation](https://github.com/moserware/Skills).
 
 There are a number of improvements planned:
 
