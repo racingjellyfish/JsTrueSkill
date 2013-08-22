@@ -6,7 +6,7 @@
 	"scripts": {
 		"test": "test"
 	},
-	"repository": "",
+	"repository": "https://github.com/racingjellyfish/JsTrueSkill.git",
 	"keywords": [
 		"TrueSkill",
 		"JavaScript"
