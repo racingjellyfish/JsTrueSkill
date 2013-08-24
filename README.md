@@ -12,5 +12,8 @@ There are a number of improvements planned:
 - refactor various classes to make them more JavaScript-y
 - improve comments
 - add example usage
-- remove the package structure as it makes little sense in JavaScript
 - improve unit tests
+
+Done:
+
+- remove the package structure as it makes little sense in JavaScript
