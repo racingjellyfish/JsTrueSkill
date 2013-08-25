@@ -1,5 +1,5 @@
-var Rating = require('../lib/Rating');
 var Player = require('../lib/Player');
+var Rating = require('../lib/Rating');
 var Team = require('../lib/Team');
 
 exports.testBasicValues = function(test) {

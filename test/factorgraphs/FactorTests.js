@@ -1,6 +1,6 @@
+var DefaultVariable = require('../../lib/factorgraphs/DefaultVariable');
 var Factor = require('../../lib/factorgraphs/Factor');
 var Message = require('../../lib/factorgraphs/Message');
-var DefaultVariable = require('../../lib/factorgraphs/DefaultVariable');
 var Variable = require('../../lib/factorgraphs/Variable');
 
 exports.testBasicValues = function(test) {

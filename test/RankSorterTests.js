@@ -1,6 +1,6 @@
-var RankSorter = require('../lib/RankSorter');
 var GameInfo = require('../lib/GameInfo');
 var Player = require('../lib/Player');
+var RankSorter = require('../lib/RankSorter');
 var Team = require('../lib/Team');
 
 exports.testNoConstructor = function(test) {
