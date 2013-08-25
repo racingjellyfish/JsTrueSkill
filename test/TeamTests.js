@@ -21,6 +21,10 @@ exports.testBasicValues = function(test) {
 	test.deepEqual(team.getPlayers(), expected,
 		'Expected players to be: ' + expected);
 
+	expected = 1;
+	test.equal(team.getSize(), expected,
+		'Expected size to be: ' + expected);
+
 	expected = new Rating(0, 1);
 	test.deepEqual(team.getPlayerRating(player), expected,
 		'Expected rating to be: ' + expected);
