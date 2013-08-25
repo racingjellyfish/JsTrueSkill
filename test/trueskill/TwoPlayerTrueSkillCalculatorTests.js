@@ -10,17 +10,17 @@ exports.setUp = function(callback) {
 };
 
 exports.testDrawn = function(test) {
-    TwoPlayerTestCases.testDrawn(test, calculator);
+	TwoPlayerTestCases.testDrawn(test, calculator);
 };
 
 exports.testNotDrawn = function(test) {
-    TwoPlayerTestCases.testNotDrawn(test, calculator);
+	TwoPlayerTestCases.testNotDrawn(test, calculator);
 };
 
 exports.testChessNotDrawn = function(test) {
-    TwoPlayerTestCases.testChessNotDrawn(test, calculator);
+	TwoPlayerTestCases.testChessNotDrawn(test, calculator);
 };
 
 exports.testMassiveUpsetDraw = function(test) {
-    TwoPlayerTestCases.testMassiveUpsetDraw(test, calculator);
+	TwoPlayerTestCases.testMassiveUpsetDraw(test, calculator);
 };

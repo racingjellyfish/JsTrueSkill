@@ -57,13 +57,13 @@ exports.testSortUnsorted = function(test) {
 };
 
 exports.testTeamSort = function(test) {
-    var player1 = new Player('1');
-    var player2 = new Player('2');
-    var gameInfo = GameInfo.getDefaultGameInfo();
+	var player1 = new Player('1');
+	var player2 = new Player('2');
+	var gameInfo = GameInfo.getDefaultGameInfo();
 
-    var team1 = new Team('One', player1, gameInfo.getDefaultRating());
-    var team2 = new Team('Two', player2, gameInfo.getDefaultRating());
-    var teams = Team.concat(team2, team1);
+	var team1 = new Team('One', player1, gameInfo.getDefaultRating());
+	var team2 = new Team('Two', player2, gameInfo.getDefaultRating());
+	var teams = Team.concat(team2, team1);
 
 	var ranks = [2, 1];
 
