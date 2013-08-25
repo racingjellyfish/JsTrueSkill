@@ -17,7 +17,6 @@
  * point.  Due to this implementation using slightly higher precision in
  * GaussianDistribution class.
  */
-var testExt = require('../libs/nodeUnit-ext');
 var GameInfo = require('../../lib/GameInfo');
 var Player = require('../../lib/Player');
 var Rating = require('../../lib/Rating');
@@ -409,10 +408,10 @@ exports.testOneOnTwoBalancedPartialPlay = function(test, calculator) {
 	 * this is not currently validated.
 	 */
 	var expected = 24.999560351959563;
-	testExt.equalsWithTolerance(test, newRatings[player2].getMean(), expected,
+	TestUtil.equalsWithTolerance(test, newRatings[player2].getMean(), expected,
 		ERROR_TOLERANCE_LARGE, "Expected player 2 rating mean to be " + expected);
 	expected = 20.603519595631585;
-	testExt.equalsWithTolerance(test, newRatings[player3].getMean(), expected,
+	TestUtil.equalsWithTolerance(test, newRatings[player3].getMean(), expected,
 		ERROR_TOLERANCE_LARGE, "Expected player 3 rating mean to be " + expected);
 
 	TestUtil.assertMatchQuality(test, 0.44721358745011336,

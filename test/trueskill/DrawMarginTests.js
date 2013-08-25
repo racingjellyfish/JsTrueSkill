@@ -1,5 +1,5 @@
 var DrawMargin = require('../../lib/trueskill/DrawMargin');
-var testExt = require('../libs/nodeunit-ext');
+var TestUtil = require('../TestUtil');
 
 var ERROR_TOLERANCE = 0.000001;
 
@@ -19,6 +19,6 @@ exports.testGetDrawMarginFromDrawProbability = function(test) {
 function assertDrawMargin(test, drawProbability, beta, expected) {
 	var actual = DrawMargin.getDrawMarginFromDrawProbability(drawProbability, beta);
 
-	testExt.equalsWithTolerance(test, actual, expected, ERROR_TOLERANCE,
+	TestUtil.equalsWithTolerance(test, actual, expected, ERROR_TOLERANCE,
 		'Expected draw margin for probability: ' + drawProbability + ' to be ' + expected);
 }
